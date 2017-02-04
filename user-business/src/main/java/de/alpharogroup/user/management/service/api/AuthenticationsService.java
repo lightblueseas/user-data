@@ -53,7 +53,7 @@ public interface AuthenticationsService extends Serializable {
 	 */
 	default public AuthenticationResult<Users, AuthenticationErrors> authorize(final Users user, final String password,			
 			final AuthenticationResult<Users, AuthenticationErrors> authenticationResult) {
-		if (user != null && user.isActive()) {
+		if (user != null && user.getActive()) {
 			String hashedPassword = "";
 			// Get hashed pw from db
 			final String dbHashedPassword = user.getPw();
