@@ -1,8 +1,8 @@
 package de.alpharogroup.user.service.api;
 
 import de.alpharogroup.db.service.api.BusinessService;
-import de.alpharogroup.user.management.entities.ResetPasswords;
-import de.alpharogroup.user.management.entities.Users;
+import de.alpharogroup.user.entities.ResetPasswords;
+import de.alpharogroup.user.entities.Users;
 
 /**
  * The interface {@link ResetPasswordsService}.

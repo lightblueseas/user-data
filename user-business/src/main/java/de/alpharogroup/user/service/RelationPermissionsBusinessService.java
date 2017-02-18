@@ -10,11 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.db.service.jpa.AbstractBusinessService;
-import de.alpharogroup.user.management.daos.RelationPermissionsDao;
-import de.alpharogroup.user.management.entities.Permissions;
-import de.alpharogroup.user.management.entities.RelationPermissions;
-import de.alpharogroup.user.management.entities.Users;
-import de.alpharogroup.user.management.factories.UserManagementFactory;
+import de.alpharogroup.user.entities.RelationPermissions;
+import de.alpharogroup.user.entities.Users;
+import de.alpharogroup.user.entities.Permissions;
+import de.alpharogroup.user.factories.UserManagementFactory;
+import de.alpharogroup.user.repositories.RelationPermissionsDao;
 import de.alpharogroup.user.service.util.HqlStringCreator;
 import de.alpharogroup.user.service.api.RelationPermissionsService;
 

@@ -7,10 +7,10 @@ import javax.persistence.Query;
 
 import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.db.service.jpa.AbstractBusinessService;
-import de.alpharogroup.user.management.daos.RolesDao;
-import de.alpharogroup.user.management.entities.Permissions;
-import de.alpharogroup.user.management.entities.Roles;
-import de.alpharogroup.user.management.factories.UserManagementFactory;
+import de.alpharogroup.user.entities.Roles;
+import de.alpharogroup.user.entities.Permissions;
+import de.alpharogroup.user.factories.UserManagementFactory;
+import de.alpharogroup.user.repositories.RolesDao;
 import de.alpharogroup.user.service.api.RolesService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +24,12 @@ public class RolesBusinessService extends
 		RolesService {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	public void setRolesDao(RolesDao rolesDao) {
+	public void setRolesDao(final RolesDao rolesDao) {
 		setDao(rolesDao);
 	}
 
@@ -50,7 +50,7 @@ public class RolesBusinessService extends
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Roles createAndSaveRole(String rolename, String description) {
+	public Roles createAndSaveRole(final String rolename, final String description) {
 		return createAndSaveRole(rolename, description, null);
 	}
 
@@ -58,8 +58,8 @@ public class RolesBusinessService extends
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Roles createAndSaveRole(String rolename, String description,
-			Set<Permissions> permissions) {
+	public Roles createAndSaveRole(final String rolename, final String description,
+			final Set<Permissions> permissions) {
 		Roles role = findRole(rolename);
 		if (role == null) {
 			role = UserManagementFactory.getInstance().newRoles(rolename,
@@ -77,6 +77,7 @@ public class RolesBusinessService extends
 		return ListExtensions.getFirst(findRoles(rolename));
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Roles> findRoles(final String rolename) {
 		final String hqlString = "select r from Roles r where r.rolename=:rolename";

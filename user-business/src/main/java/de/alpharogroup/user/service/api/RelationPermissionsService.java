@@ -3,9 +3,9 @@ package de.alpharogroup.user.service.api;
 import java.util.List;
 
 import de.alpharogroup.db.service.api.BusinessService;
-import de.alpharogroup.user.management.entities.Permissions;
-import de.alpharogroup.user.management.entities.RelationPermissions;
-import de.alpharogroup.user.management.entities.Users;
+import de.alpharogroup.user.entities.RelationPermissions;
+import de.alpharogroup.user.entities.Users;
+import de.alpharogroup.user.entities.Permissions;
 
 /**
  * The interface {@link RelationPermissionsService}.
