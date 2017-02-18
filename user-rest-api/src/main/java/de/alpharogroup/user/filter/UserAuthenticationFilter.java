@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.filter;
+package de.alpharogroup.user.filter;
 
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.google.common.collect.MapMaker;
 
 import de.alpharogroup.service.rs.filter.AuthenticationFilter;
-import de.alpharogroup.user.management.service.api.UserTokenService;
+import de.alpharogroup.user.service.api.UserTokenService;
+
 import lombok.Getter;
 import lombok.Setter;
 

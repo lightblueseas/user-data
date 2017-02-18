@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.rest.api;
+package de.alpharogroup.user.rest.api;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.alpharogroup.service.rs.RestfulResource;
-import de.alpharogroup.user.management.domain.UserToken;
+import de.alpharogroup.user.domain.UserToken;
 
 /**
  * The interface {@link UserTokensResource} provides methods for resolve users.

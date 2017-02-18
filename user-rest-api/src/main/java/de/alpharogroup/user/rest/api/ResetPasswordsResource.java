@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.rest.api;
+package de.alpharogroup.user.rest.api;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -8,8 +8,8 @@ import javax.ws.rs.core.MediaType;
 
 import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.service.rs.RestfulResource;
-import de.alpharogroup.user.management.domain.ResetPassword;
-import de.alpharogroup.user.management.domain.User;
+import de.alpharogroup.user.domain.ResetPassword;
+import de.alpharogroup.user.domain.User;
 
 /**
  * The interface {@link ResetPasswordsResource} provides methods for reset passwords from user

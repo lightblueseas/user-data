@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.rest;
+package de.alpharogroup.user.rest;
 
 import javax.ws.rs.core.Response;
 
@@ -8,9 +8,9 @@ import de.alpharogroup.auth.Credentials;
 import de.alpharogroup.auth.models.AuthenticationErrors;
 import de.alpharogroup.auth.models.AuthenticationResult;
 import de.alpharogroup.auth.token.AuthToken;
-import de.alpharogroup.user.management.domain.User;
-import de.alpharogroup.user.management.rest.api.AuthenticationsResource;
-import de.alpharogroup.user.management.service.api.AuthenticationService;
+import de.alpharogroup.user.domain.User;
+import de.alpharogroup.user.rest.api.AuthenticationsResource;
+import de.alpharogroup.user.service.api.AuthenticationService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,9 +29,9 @@ public class AuthenticationsRestResource implements AuthenticationsResource {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Response authenticate(Credentials credentials) {
-        String username = credentials.getUsername();
-        String password = credentials.getPassword();
+	public Response authenticate(final Credentials credentials) {
+        final String username = credentials.getUsername();
+        final String password = credentials.getPassword();
         return authenticate(username, password);
 	}
 
@@ -39,15 +39,15 @@ public class AuthenticationsRestResource implements AuthenticationsResource {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Response authenticate(String username, String password) {
-		AuthenticationResult<User, AuthenticationErrors> result = authenticationService.authenticate(username, password);        
+	public Response authenticate(final String username, final String password) {
+		final AuthenticationResult<User, AuthenticationErrors> result = authenticationService.authenticate(username, password);
         if (CollectionUtils.isNotEmpty(result.getValidationErrors())) {
             return Response.status(Response.Status.UNAUTHORIZED)
             		.header("Access-Control-Allow-Origin", "*")// allow cors...
-            		.build();			
+            		.build();
 		}
-        String authenticationToken = authenticationService.newAuthenticationToken(username);
-        AuthToken authToken = AuthToken.builder().value(authenticationToken).build();
+        final String authenticationToken = authenticationService.newAuthenticationToken(username);
+        final AuthToken authToken = AuthToken.builder().value(authenticationToken).build();
         // Set the auth token in the response
 		return Response.ok(authToken.getValue())
 				.header("Access-Control-Allow-Origin", "*")// allow cors...

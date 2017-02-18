@@ -8,7 +8,7 @@
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-		<class>de.alpharogroup.user.management.entities.Permissions</class>
+		<class>de.alpharogroup.user.entities.Permissions</class>
 		<class>de.alpharogroup.user.entities.RelationPermissions</class>
 		<class>de.alpharogroup.user.entities.ResetPasswords</class>
 		<class>de.alpharogroup.user.entities.Roles</class>

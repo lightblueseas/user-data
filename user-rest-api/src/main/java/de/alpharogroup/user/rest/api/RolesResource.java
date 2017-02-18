@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.rest.api;
+package de.alpharogroup.user.rest.api;
 
 import java.util.List;
 import java.util.Set;
@@ -12,8 +12,8 @@ import javax.ws.rs.core.MediaType;
 import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.collections.pairs.Triple;
 import de.alpharogroup.service.rs.RestfulResource;
-import de.alpharogroup.user.management.domain.Permission;
-import de.alpharogroup.user.management.domain.Role;
+import de.alpharogroup.user.domain.Permission;
+import de.alpharogroup.user.domain.Role;
 
 /**
  * The interface {@link RolesResource} provides methods for resolve roles of

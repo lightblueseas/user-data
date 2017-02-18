@@ -27,34 +27,34 @@
 		</jaxrs:providers>
 	</jaxrs:server>
 
-	<bean id="authenticationFilter" class="de.alpharogroup.user.management.filter.UserAuthenticationFilter">
+	<bean id="authenticationFilter" class="de.alpharogroup.user.filter.UserAuthenticationFilter">
 		<property name="userManagementService" ref="userManagementDomainService"></property>
 	</bean>
 	<!-- web resources -->
-	<bean id="authenticationsResource" class="de.alpharogroup.user.management.rest.AuthenticationsRestResource">
+	<bean id="authenticationsResource" class="de.alpharogroup.user.rest.AuthenticationsRestResource">
 		<property name="authenticationService" ref="authenticationDomainService"></property>
 	</bean>
 	
-	<bean id="permissionsResource" class="de.alpharogroup.user.management.rest.PermissionsRestResource">
+	<bean id="permissionsResource" class="de.alpharogroup.user.rest.PermissionsRestResource">
 		<property name="domainService" ref="permissionDomainService"></property>
 	</bean>
 	
-	<bean id="relationPermissionsResource" class="de.alpharogroup.user.management.rest.RelationPermissionsRestResource">
+	<bean id="relationPermissionsResource" class="de.alpharogroup.user.rest.RelationPermissionsRestResource">
 		<property name="domainService" ref="relationPermissionDomainService"></property>
 	</bean>
-	<bean id="resetPasswordsResource" class="de.alpharogroup.user.management.rest.ResetPasswordsRestResource">
+	<bean id="resetPasswordsResource" class="de.alpharogroup.user.rest.ResetPasswordsRestResource">
 		<property name="domainService" ref="resetPasswordDomainService"></property>
 	</bean>
 
-	<bean id="rolesResource" class="de.alpharogroup.user.management.rest.RolesRestResource">
+	<bean id="rolesResource" class="de.alpharogroup.user.rest.RolesRestResource">
 		<property name="domainService" ref="roleDomainService"></property>
 	</bean>
 	
-	<bean id="usersResource" class="de.alpharogroup.user.management.rest.UsersRestResource">
+	<bean id="usersResource" class="de.alpharogroup.user.rest.UsersRestResource">
 		<property name="domainService" ref="userDomainService"></property>
 	</bean>
 	
-	<bean id="userTokensResource" class="de.alpharogroup.user.management.rest.UserTokensRestResource">
+	<bean id="userTokensResource" class="de.alpharogroup.user.rest.UserTokensRestResource">
 		<property name="domainService" ref="userTokenDomainService"></property>
 	</bean>
 

@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.rest.api;
+package de.alpharogroup.user.rest.api;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.alpharogroup.service.rs.RestfulResource;
-import de.alpharogroup.user.management.domain.Permission;
+import de.alpharogroup.user.domain.Permission;
 
 /**
  * The interface {@link PermissionsResource} provides methods for resolving permissions objects.
@@ -44,7 +44,7 @@ public interface PermissionsResource extends RestfulResource<Integer, Permission
 	@Path("/new/perm/{name}/{description}/{shortcut}/")
 	Permission createAndSavePermissions(@PathParam("name")String name, @PathParam("description")String description,
 			@PathParam("shortcut")String shortcut);
-	
+
 	/**
 	 * Find the {@link Permission} object by the given shortcut.
 	 *
@@ -54,7 +54,7 @@ public interface PermissionsResource extends RestfulResource<Integer, Permission
 	@GET
 	@Path("/find/by/shortcut/{shortcut}/")
 	Permission findByShortcut(@PathParam("shortcut")String shortcut);
-	
+
 	/**
 	 * Find the {@link Permission} object by the given name.
 	 *

@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.rest.api;
+package de.alpharogroup.user.rest.api;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import javax.ws.rs.core.MediaType;
 import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.collections.pairs.Triple;
 import de.alpharogroup.service.rs.RestfulResource;
-import de.alpharogroup.user.management.domain.Permission;
-import de.alpharogroup.user.management.domain.RelationPermission;
-import de.alpharogroup.user.management.domain.User;
+import de.alpharogroup.user.domain.Permission;
+import de.alpharogroup.user.domain.RelationPermission;
+import de.alpharogroup.user.domain.User;
 
 /**
  * The interface {@link RelationPermissionsResource} provides methods for resolving relations of
@@ -24,11 +24,11 @@ import de.alpharogroup.user.management.domain.User;
 @Consumes(MediaType.APPLICATION_JSON)
 public interface RelationPermissionsResource extends RestfulResource<Integer, RelationPermission>
 {
-	
+
 	/**
 	 * Find all given permissions that the given provider granted to the
 	 * subscriber.
-	 * 
+	 *
 	 * @param provider
 	 *            the provider
 	 * @param subscriber
@@ -42,7 +42,7 @@ public interface RelationPermissionsResource extends RestfulResource<Integer, Re
 	/**
 	 * Finds the RelationPermissions object from the given permissions the given
 	 * provider and the subscriber.
-	 * 
+	 *
 	 * @param provider
 	 *            the provider
 	 * @param subscriber
@@ -58,7 +58,7 @@ public interface RelationPermissionsResource extends RestfulResource<Integer, Re
 	/**
 	 * Find a list of RelationPermissions that the given provider granted to the
 	 * subscriber.
-	 * 
+	 *
 	 * @param provider
 	 *            the provider
 	 * @param subscriber
@@ -68,12 +68,12 @@ public interface RelationPermissionsResource extends RestfulResource<Integer, Re
 	@POST
 	@Path("/find")
 	List<RelationPermission> find(final KeyValuePair<User, User> providerToSubscriber);
-	
+
 	/**
 	 * Find a list of RelationPermissions from the given provider and to the
 	 * subscriber and the given permission if the provider granted this
 	 * permission to the subscriber.
-	 * 
+	 *
 	 * @param provider
 	 *            the provider
 	 * @param subscriber
@@ -85,7 +85,7 @@ public interface RelationPermissionsResource extends RestfulResource<Integer, Re
 	@POST
 	@Path("/find/by/perm")
 	List<RelationPermission> find(final Triple<User, User, Permission> providerToSubscriberOfPerms);
-	
+
 	/**
 	 * Adds the given permission for the given subscriber provided from the provider.
 	 *
@@ -96,7 +96,7 @@ public interface RelationPermissionsResource extends RestfulResource<Integer, Re
 	@POST
 	@Path("/add/perm")
 	void addPermission(final Triple<User, User, Permission> providerToSubscriberOfPerms);
-		
+
 	/**
 	 * Removes the given permission for the given subscriber provided from the provider.
 	 *
@@ -107,7 +107,7 @@ public interface RelationPermissionsResource extends RestfulResource<Integer, Re
 	@POST
 	@Path("/remove/perm")
 	void removePermission( final Triple<User, User, Permission> providerToSubscriberOfPerms);
-	
+
 	/**
 	 * Removes all permissions that are given for both users.
 	 *

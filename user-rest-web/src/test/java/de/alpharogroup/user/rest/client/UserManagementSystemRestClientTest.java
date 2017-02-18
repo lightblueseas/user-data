@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.alpharogroup.user.management.rest.client;
+package de.alpharogroup.user.rest.client;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,12 +44,12 @@ import de.alpharogroup.user.domain.RelationPermission;
 import de.alpharogroup.user.domain.ResetPassword;
 import de.alpharogroup.user.domain.Role;
 import de.alpharogroup.user.domain.User;
-import de.alpharogroup.user.management.rest.api.AuthenticationsResource;
-import de.alpharogroup.user.management.rest.api.PermissionsResource;
-import de.alpharogroup.user.management.rest.api.RelationPermissionsResource;
-import de.alpharogroup.user.management.rest.api.ResetPasswordsResource;
-import de.alpharogroup.user.management.rest.api.RolesResource;
-import de.alpharogroup.user.management.rest.api.UsersResource;
+import de.alpharogroup.user.rest.api.AuthenticationsResource;
+import de.alpharogroup.user.rest.api.PermissionsResource;
+import de.alpharogroup.user.rest.api.RelationPermissionsResource;
+import de.alpharogroup.user.rest.api.ResetPasswordsResource;
+import de.alpharogroup.user.rest.api.RolesResource;
+import de.alpharogroup.user.rest.api.UsersResource;
 
 /**
  * The class {@link UserManagementSystemRestClientTest}.

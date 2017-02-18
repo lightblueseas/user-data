@@ -1,13 +1,13 @@
-package de.alpharogroup.user.management.rest;
+package de.alpharogroup.user.rest;
 
 import java.util.List;
 
 import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.service.rs.AbstractRestfulResource;
-import de.alpharogroup.user.management.domain.Role;
-import de.alpharogroup.user.management.domain.User;
-import de.alpharogroup.user.management.rest.api.UsersResource;
-import de.alpharogroup.user.management.service.api.UserService;
+import de.alpharogroup.user.domain.Role;
+import de.alpharogroup.user.domain.User;
+import de.alpharogroup.user.service.api.UserService;
+import de.alpharogroup.user.rest.api.UsersResource;
 
 public class UsersRestResource
 	extends

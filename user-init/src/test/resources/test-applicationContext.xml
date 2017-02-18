@@ -16,12 +16,12 @@
 	<!-- Scan sample packages for Spring annotations -->
 	<!-- TODO UPDATE PACKAGE TO NEW -->
 	
-	<context:component-scan base-package="de.alpharogroup.user.management.daos" />
-	<context:component-scan base-package="de.alpharogroup.user.management.entities" />
-	<context:component-scan base-package="de.alpharogroup.user.management.mapper" />
-	<context:component-scan base-package="de.alpharogroup.user.management.service.api" />
-	<context:component-scan base-package="de.alpharogroup.user.management.service" />
-	<context:component-scan base-package="de.alpharogroup.user.management.service.mapper" />
+	<context:component-scan base-package="de.alpharogroup.user.repositories" />
+	<context:component-scan base-package="de.alpharogroup.user.entities" />
+	<context:component-scan base-package="de.alpharogroup.user.mapper" />
+	<context:component-scan base-package="de.alpharogroup.user.service.api" />
+	<context:component-scan base-package="de.alpharogroup.user.service" />
+	<context:component-scan base-package="de.alpharogroup.user.service.mapper" />
 		
 	<bean id="propertyPlaceholder"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

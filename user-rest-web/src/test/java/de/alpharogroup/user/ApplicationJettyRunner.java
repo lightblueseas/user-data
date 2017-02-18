@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management;
+package de.alpharogroup.user;
 
 import java.io.File;
 import java.io.IOException;

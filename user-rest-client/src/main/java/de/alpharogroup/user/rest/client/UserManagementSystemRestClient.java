@@ -1,13 +1,13 @@
-package de.alpharogroup.user.management.rest.client;
+package de.alpharogroup.user.rest.client;
 
 import de.alpharogroup.cxf.rest.client.AbstractRestClient;
-import de.alpharogroup.user.management.rest.api.AuthenticationsResource;
-import de.alpharogroup.user.management.rest.api.PermissionsResource;
-import de.alpharogroup.user.management.rest.api.RelationPermissionsResource;
-import de.alpharogroup.user.management.rest.api.ResetPasswordsResource;
-import de.alpharogroup.user.management.rest.api.RolesResource;
-import de.alpharogroup.user.management.rest.api.UserTokensResource;
-import de.alpharogroup.user.management.rest.api.UsersResource;
+import de.alpharogroup.user.rest.api.AuthenticationsResource;
+import de.alpharogroup.user.rest.api.PermissionsResource;
+import de.alpharogroup.user.rest.api.RelationPermissionsResource;
+import de.alpharogroup.user.rest.api.ResetPasswordsResource;
+import de.alpharogroup.user.rest.api.RolesResource;
+import de.alpharogroup.user.rest.api.UserTokensResource;
+import de.alpharogroup.user.rest.api.UsersResource;
 import lombok.Getter;
 
 /**

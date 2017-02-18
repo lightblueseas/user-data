@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
-import de.alpharogroup.user.management.db.init.DatabaseInitialization;
+import de.alpharogroup.user.db.init.DatabaseInitialization;
 
 /**
  * The Class {@link InitializeDatabase} initialize the specific database.

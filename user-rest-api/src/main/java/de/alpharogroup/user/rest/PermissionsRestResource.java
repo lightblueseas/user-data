@@ -1,12 +1,12 @@
-package de.alpharogroup.user.management.rest;
+package de.alpharogroup.user.rest;
 
 
 import java.util.List;
 
 import de.alpharogroup.service.rs.AbstractRestfulResource;
-import de.alpharogroup.user.management.domain.Permission;
-import de.alpharogroup.user.management.rest.api.PermissionsResource;
-import de.alpharogroup.user.management.service.api.PermissionService;
+import de.alpharogroup.user.domain.Permission;
+import de.alpharogroup.user.rest.api.PermissionsResource;
+import de.alpharogroup.user.service.api.PermissionService;
 
 /**
  * The class {@link PermissionsRestResource} .
@@ -22,7 +22,7 @@ public class PermissionsRestResource
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Permission createAndSavePermissions(String name, String description) {
+	public Permission createAndSavePermissions(final String name, final String description) {
 		return getDomainService().createAndSavePermissions(name, description);
 	}
 
@@ -30,7 +30,7 @@ public class PermissionsRestResource
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Permission createAndSavePermissions(String name, String description, String shortcut) {
+	public Permission createAndSavePermissions(final String name, final String description, final String shortcut) {
 		return getDomainService().createAndSavePermissions(name, description, shortcut);
 	}
 
@@ -38,7 +38,7 @@ public class PermissionsRestResource
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Permission findByShortcut(String shortcut) {
+	public Permission findByShortcut(final String shortcut) {
 		return getDomainService().findByShortcut(shortcut);
 	}
 
@@ -46,7 +46,7 @@ public class PermissionsRestResource
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Permission findByName(String name) {
+	public Permission findByName(final String name) {
 		return getDomainService().findByName(name);
 	}
 
@@ -54,7 +54,7 @@ public class PermissionsRestResource
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<Permission> find(String description, String name, String shortcut) {
+	public List<Permission> find(final String description, final String name, final String shortcut) {
 		return getDomainService().find(description, name, shortcut);
 	}
 

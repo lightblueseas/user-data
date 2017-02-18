@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.db.init;
+package de.alpharogroup.user.db.init;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,14 +14,11 @@ public class DatabaseInitialization extends AbstractDatabaseInitialization {
 		super(databaseProperties);
 	}
 
+	@Override
 	protected List<File> getScriptFiles() {
 		final File insertsDir = getInsertDir();
 		final List<File> scriptFiles = new ArrayList<>();
 		scriptFiles.add(new File(insertsDir, "insertPermissions.sql"));
-		scriptFiles.add(new File(insertsDir, "insertCountries.sql"));
-		scriptFiles.add(new File(insertsDir, "insertAllFederalStates.sql"));
-		scriptFiles.add(new File(insertsDir, "insertAllKnownZipcodes.sql"));
-		scriptFiles.add(new File(insertsDir, "insertGermanSpeekingCountriesZipcodesToAddresses.sql"));
 		return scriptFiles;
 	}
 

@@ -1,11 +1,11 @@
-package de.alpharogroup.user.management.rest;
+package de.alpharogroup.user.rest;
 
 import java.util.List;
 
 import de.alpharogroup.service.rs.AbstractRestfulResource;
-import de.alpharogroup.user.management.domain.UserToken;
-import de.alpharogroup.user.management.rest.api.UserTokensResource;
-import de.alpharogroup.user.management.service.api.UserTokenService;
+import de.alpharogroup.user.domain.UserToken;
+import de.alpharogroup.user.service.api.UserTokenService;
+import de.alpharogroup.user.rest.api.UserTokensResource;
 
 /**
  * The class {@link UserTokensRestResource}.
