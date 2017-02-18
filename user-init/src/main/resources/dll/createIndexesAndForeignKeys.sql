@@ -1,0 +1,10 @@
+alter table relation_permissions add constraint FK634032C1FB63A073 foreign key (subscriber_id) references users;
+alter table relation_permissions add constraint FK634032C118B30E4A foreign key (provider_id) references users;
+alter table reset_passwords add constraint FK35B79A4894DD2230 foreign key (user_id) references users;
+alter table role_permissions add constraint FKEAD9D23BEF87CA5A foreign key (role_id) references roles;
+alter table role_permissions add constraint FKEAD9D23B91DD8968 foreign key (permission_id) references permissions;
+alter table user_relation_permissions add constraint FKDBE83EB591DD8968 foreign key (permission_id) references permissions;
+alter table user_relation_permissions add constraint FKDBE83EB532C37ABD foreign key (user_relation_permission_id) references relation_permissions;
+alter table user_roles add constraint FK73429949EF87CA5A foreign key (role_id) references roles;
+alter table user_roles add constraint FK7342994994DD2230 foreign key (user_id) references users;
+create sequence hibernate_sequence;

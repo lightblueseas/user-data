@@ -136,7 +136,7 @@
 								<drop>true</drop>
 								<!-- optional, but useful for later inspection -->
 								<outputfilename>schema.ddl</outputfilename>
-								<persistenceunit>user</persistenceunit>
+								<persistenceunit>users</persistenceunit>
 							</componentProperties>
 						</configuration>
 					</plugin>
