@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import de.alpharogroup.user.management.service.util.HqlStringCreator;
+import de.alpharogroup.user.service.util.HqlStringCreator;
 import de.alpharogroup.user.service.api.PermissionsService;
 
 @Transactional
@@ -24,40 +24,43 @@ public class PermissionsBusinessService extends
 		PermissionsService {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	public void setPermissionsDao(PermissionsDao permissionsDao) {
+	public void setPermissionsDao(final PermissionsDao permissionsDao) {
 		setDao(permissionsDao);
 	}
 
 	@Override
-	public Permissions createAndSavePermissions(String name, String description) {
+	public Permissions createAndSavePermissions(final String name, final String description) {
 		return createAndSavePermissions(name, description, null);
 	}
 
 	@Override
-	public Permissions createAndSavePermissions(String name,
-			String description, String shortcut) {
+	public Permissions createAndSavePermissions(final String name,
+			final String description, final String shortcut) {
 		Permissions permissions = UserManagementFactory.getInstance()
 				.newPermissions(name, description, shortcut);
 		permissions = merge(permissions);
 		return permissions;
 	}
-	
-	public Permissions findByShortcut(String shortcut) {
+
+	@Override
+	public Permissions findByShortcut(final String shortcut) {
 		return ListExtensions.getFirst(find(null, null, shortcut));
 	}
-	
-	public Permissions findByName(String name) {
+
+	@Override
+	public Permissions findByName(final String name) {
 		return ListExtensions.getFirst(find(null, name, null));
 	}
-	
+
+	@Override
 	@SuppressWarnings("unchecked")
-	public List<Permissions> find(String description, String permissionName, String shortcut) {
-		String hqlString = HqlStringCreator.forPermissions(description, permissionName, shortcut);
+	public List<Permissions> find(final String description, final String permissionName, final String shortcut) {
+		final String hqlString = HqlStringCreator.forPermissions(description, permissionName, shortcut);
 		final Query query = getQuery(hqlString);
 		if(description != null){
 			query.setParameter("description", description);
@@ -66,7 +69,7 @@ public class PermissionsBusinessService extends
 			query.setParameter("permissionName", permissionName);
 		}
 		if(shortcut != null){
-			query.setParameter("shortcut", shortcut);			
+			query.setParameter("shortcut", shortcut);
 		}
 		final List<Permissions> permissions = query.getResultList();
 		return permissions;

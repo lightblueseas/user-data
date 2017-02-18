@@ -15,7 +15,7 @@ import de.alpharogroup.user.management.entities.Permissions;
 import de.alpharogroup.user.management.entities.RelationPermissions;
 import de.alpharogroup.user.management.entities.Users;
 import de.alpharogroup.user.management.factories.UserManagementFactory;
-import de.alpharogroup.user.management.service.util.HqlStringCreator;
+import de.alpharogroup.user.service.util.HqlStringCreator;
 import de.alpharogroup.user.service.api.RelationPermissionsService;
 
 @Transactional
