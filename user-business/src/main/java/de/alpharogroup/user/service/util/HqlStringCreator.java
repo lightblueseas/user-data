@@ -1,13 +1,8 @@
-package de.alpharogroup.user.management.service.util;
+package de.alpharogroup.user.service.util;
 
 import java.util.Date;
 
-
-import de.alpharogroup.user.management.daos.RelationPermissionsDao;
 import de.alpharogroup.user.management.entities.Permissions;
-import de.alpharogroup.user.management.entities.RelationPermissions;
-import de.alpharogroup.user.management.entities.Users;
-
 import de.alpharogroup.user.management.entities.RelationPermissions;
 import de.alpharogroup.user.management.entities.ResetPasswords;
 import de.alpharogroup.user.management.entities.Users;

@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.sign.up;
+package de.alpharogroup.user.sign.up;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.service.api;
+package de.alpharogroup.user.service.api;
 
 import de.alpharogroup.db.service.api.BusinessService;
 import de.alpharogroup.user.management.entities.ResetPasswords;

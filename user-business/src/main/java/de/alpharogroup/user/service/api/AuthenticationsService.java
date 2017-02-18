@@ -1,11 +1,11 @@
-package de.alpharogroup.user.management.service.api;
+package de.alpharogroup.user.service.api;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.NoSuchAlgorithmException;
 import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -23,11 +23,11 @@ public interface AuthenticationsService extends Serializable {
 	 *
 	 * @param emailOrUsername the email or the user name of the {@link Users} object.
 	 * @param password the password
-	 * @return the resulted {@link AuthenticationResult} object 
+	 * @return the resulted {@link AuthenticationResult} object
 	 */
-	default public AuthenticationResult<Users, AuthenticationErrors> authenticate(String emailOrUsername, String password) {
-		AuthenticationResult<Users, AuthenticationErrors> authenticationResult = new AuthenticationResult<Users, AuthenticationErrors>();
-		final UsersService userManagementBusinessService = getUsersService();		
+	default public AuthenticationResult<Users, AuthenticationErrors> authenticate(final String emailOrUsername, final String password) {
+		final AuthenticationResult<Users, AuthenticationErrors> authenticationResult = new AuthenticationResult<>();
+		final UsersService userManagementBusinessService = getUsersService();
 		// Check if username exists.
 		final boolean usernameExists = userManagementBusinessService
 				.existsUserWithUsername(emailOrUsername);
@@ -35,14 +35,14 @@ public interface AuthenticationsService extends Serializable {
 			final Users user = userManagementBusinessService
 					.findUserWithUsername(emailOrUsername);
 			return authorize(user, password, authenticationResult);
-		} 
+		}
 		// set validation errors
 		authenticationResult.getValidationErrors().add(AuthenticationErrors.EMAIL_OR_USERNAME_DOES_NOT_EXIST);
-		
-		return authenticationResult;	
+
+		return authenticationResult;
 	}
-	
-	
+
+
 	/**
 	 * Authorize given Users object.
 	 *
@@ -51,32 +51,32 @@ public interface AuthenticationsService extends Serializable {
 	 * @param authenticationResult the authentication result
 	 * @return the authentication result
 	 */
-	default public AuthenticationResult<Users, AuthenticationErrors> authorize(final Users user, final String password,			
+	default public AuthenticationResult<Users, AuthenticationErrors> authorize(final Users user, final String password,
 			final AuthenticationResult<Users, AuthenticationErrors> authenticationResult) {
 		if (user != null && user.getActive()) {
 			String hashedPassword = "";
 			// Get hashed pw from db
 			final String dbHashedPassword = user.getPw();
 			// Get salt from db
-			final String salt = user.getSalt();			
+			final String salt = user.getSalt();
 			// get instance of PasswordEncryptor
 			final PasswordEncryptor passwordService = PasswordEncryptor.getInstance();
 			try {
 	            hashedPassword = passwordService.hashAndHexPassword(password, salt);
-	        } catch ( NoSuchAlgorithmException | 
+	        } catch ( NoSuchAlgorithmException |
 	        		InvalidAlgorithmParameterException |
-	        		InvalidKeyException | 
+	        		InvalidKeyException |
 	        		InvalidKeySpecException |
-	        		UnsupportedEncodingException | 
-	        		NoSuchPaddingException | 
-	        		IllegalBlockSizeException | 
+	        		UnsupportedEncodingException |
+	        		NoSuchPaddingException |
+	        		IllegalBlockSizeException |
 	        		BadPaddingException e ) {
-	        	authenticationResult.getValidationErrors().add(AuthenticationErrors.PASSWORD_INVALID);	
-	    		return authenticationResult;        	
+	        	authenticationResult.getValidationErrors().add(AuthenticationErrors.PASSWORD_INVALID);
+	    		return authenticationResult;
 	        }
 			if (passwordService.match(hashedPassword, dbHashedPassword)) {
-				authenticationResult.setUser(user);				
-			} else { 
+				authenticationResult.setUser(user);
+			} else {
 				authenticationResult.getValidationErrors().add(AuthenticationErrors.PASSWORD_INVALID);
 			}
 		} else {
@@ -86,7 +86,7 @@ public interface AuthenticationsService extends Serializable {
 	}
 
 	UsersService getUsersService();
-	
+
 	String newAuthenticationToken(String username);
 
 }

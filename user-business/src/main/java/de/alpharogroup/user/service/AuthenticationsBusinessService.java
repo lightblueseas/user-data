@@ -1,12 +1,12 @@
-package de.alpharogroup.user.management.service;
+package de.alpharogroup.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import de.alpharogroup.user.management.service.api.AuthenticationsService;
-import de.alpharogroup.user.management.service.api.UserTokensService;
-import de.alpharogroup.user.management.service.api.UsersService;
+import de.alpharogroup.user.service.api.AuthenticationsService;
+import de.alpharogroup.user.service.api.UserTokensService;
+import de.alpharogroup.user.service.api.UsersService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,8 +33,8 @@ public class AuthenticationsBusinessService implements AuthenticationsService {
 	private UsersService usersService;
 
 	@Override
-	public String newAuthenticationToken(String username) {		
+	public String newAuthenticationToken(final String username) {
 		return userTokensService.newAuthenticationToken(username);
 	}
-	
+
 }

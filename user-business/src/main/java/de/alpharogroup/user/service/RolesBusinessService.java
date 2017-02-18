@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.service;
+package de.alpharogroup.user.service;
 
 import java.util.List;
 import java.util.Set;
@@ -11,12 +11,11 @@ import de.alpharogroup.user.management.daos.RolesDao;
 import de.alpharogroup.user.management.entities.Permissions;
 import de.alpharogroup.user.management.entities.Roles;
 import de.alpharogroup.user.management.factories.UserManagementFactory;
+import de.alpharogroup.user.service.api.RolesService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import de.alpharogroup.user.management.service.api.RolesService;
 
 @Transactional
 @Service("rolesService")

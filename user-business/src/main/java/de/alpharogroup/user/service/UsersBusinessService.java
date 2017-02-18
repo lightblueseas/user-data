@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.service;
+package de.alpharogroup.user.service;
 
 import java.util.Date;
 import java.util.List;
@@ -19,7 +19,7 @@ import de.alpharogroup.db.service.jpa.AbstractBusinessService;
 import de.alpharogroup.user.management.daos.UsersDao;
 import de.alpharogroup.user.management.entities.Roles;
 import de.alpharogroup.user.management.entities.Users;
-import de.alpharogroup.user.management.service.api.UsersService;
+import de.alpharogroup.user.service.api.UsersService;
 
 @Transactional
 @Service("usersService")

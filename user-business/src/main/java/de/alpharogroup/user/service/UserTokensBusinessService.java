@@ -1,4 +1,4 @@
-package de.alpharogroup.user.management.service;
+package de.alpharogroup.user.service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -16,7 +16,7 @@ import de.alpharogroup.db.service.jpa.AbstractBusinessService;
 import de.alpharogroup.random.RandomExtensions;
 import de.alpharogroup.user.management.daos.UserTokensDao;
 import de.alpharogroup.user.management.entities.UserTokens;
-import de.alpharogroup.user.management.service.api.UserTokensService;
+import de.alpharogroup.user.service.api.UserTokensService;
 
 @Transactional
 @Service("userTokensService")

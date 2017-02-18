@@ -1,10 +1,10 @@
 package de.alpharogroup.user.service.locator;
 
-import de.alpharogroup.user.management.service.api.PermissionsService;
-import de.alpharogroup.user.management.service.api.RelationPermissionsService;
-import de.alpharogroup.user.management.service.api.ResetPasswordsService;
-import de.alpharogroup.user.management.service.api.RolesService;
-import de.alpharogroup.user.management.service.api.UsersService;
+import de.alpharogroup.user.service.api.PermissionsService;
+import de.alpharogroup.user.service.api.RelationPermissionsService;
+import de.alpharogroup.user.service.api.ResetPasswordsService;
+import de.alpharogroup.user.service.api.RolesService;
+import de.alpharogroup.user.service.api.UsersService;
 
 public interface ServiceLocator {
 
