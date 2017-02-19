@@ -10,7 +10,7 @@ import de.alpharogroup.user.domain.User;
 import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.mapper.UsersMapper;
 import de.alpharogroup.user.service.api.AuthenticationService;
-import de.alpharogroup.user.service.api.AuthenticationsService;
+import de.alpharogroup.user.service.api.BaseAuthenticationsService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,11 +19,11 @@ import lombok.Setter;
 public class AuthenticationDomainService implements AuthenticationService {
 
 
-	/** The {@link AuthenticationsService}. */
+	/** The {@link BaseAuthenticationsService}. */
 	@Autowired
 	@Getter
 	@Setter
-	private AuthenticationsService authenticationsService;
+	private BaseAuthenticationsService authenticationsService;
 
 	private final UsersMapper mapper = new UsersMapper();
 

@@ -1,9 +1,6 @@
 package de.alpharogroup.user.service;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.persistence.Query;
 
@@ -13,29 +10,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.alpharogroup.collections.ListExtensions;
-import de.alpharogroup.date.CalculateDateExtensions;
 import de.alpharogroup.db.service.jpa.AbstractBusinessService;
 import de.alpharogroup.user.entities.Roles;
 import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.repositories.UsersDao;
-import de.alpharogroup.user.service.api.UsersService;
+import de.alpharogroup.user.service.api.BaseUsersService;
 
 @Transactional
-@Service("usersService")
-public class UsersBusinessService extends AbstractBusinessService<Users, Integer, UsersDao>
+@Service("baseUsersService")
+public class BaseUserBusinessService extends AbstractBusinessService<Users, Integer, UsersDao>
 	implements
-		UsersService
+		BaseUsersService
 {
 
 	/** The Constant LOGGER. */
-	private final static Logger LOGGER = Logger.getLogger(UsersBusinessService.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(BaseUserBusinessService.class.getName());
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	public void setUsersDao(UsersDao usersDao)
+	public void setUsersDao(final UsersDao usersDao)
 	{
 		setDao(usersDao);
 	}
@@ -43,6 +39,7 @@ public class UsersBusinessService extends AbstractBusinessService<Users, Integer
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean existsUserWithUsername(final String username)
 	{
 		final Users users = findUserWithUsername(username);
@@ -56,6 +53,7 @@ public class UsersBusinessService extends AbstractBusinessService<Users, Integer
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Roles> findRolesFromUser(final Users user)
 	{
@@ -69,6 +67,7 @@ public class UsersBusinessService extends AbstractBusinessService<Users, Integer
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public Users findUserWithUsername(final String username)
 	{
@@ -82,6 +81,7 @@ public class UsersBusinessService extends AbstractBusinessService<Users, Integer
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean userIsInRole(final Users user, final Roles role)
 	{
 		final List<Roles> roles = findRolesFromUser(user);

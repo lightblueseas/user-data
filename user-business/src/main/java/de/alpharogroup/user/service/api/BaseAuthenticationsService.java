@@ -16,7 +16,7 @@ import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.auth.models.AuthenticationErrors;
 import de.alpharogroup.auth.models.AuthenticationResult;
 
-public interface AuthenticationsService extends Serializable {
+public interface BaseAuthenticationsService extends Serializable {
 
 	/**
 	 * Perform the authentication with the given email and password and return the result.
@@ -27,7 +27,7 @@ public interface AuthenticationsService extends Serializable {
 	 */
 	default public AuthenticationResult<Users, AuthenticationErrors> authenticate(final String emailOrUsername, final String password) {
 		final AuthenticationResult<Users, AuthenticationErrors> authenticationResult = new AuthenticationResult<>();
-		final UsersService userManagementBusinessService = getUsersService();
+		final BaseUsersService userManagementBusinessService = getUsersService();
 		// Check if username exists.
 		final boolean usernameExists = userManagementBusinessService
 				.existsUserWithUsername(emailOrUsername);
@@ -85,7 +85,7 @@ public interface AuthenticationsService extends Serializable {
 		return authenticationResult;
 	}
 
-	UsersService getUsersService();
+	BaseUsersService getUsersService();
 
 	String newAuthenticationToken(String username);
 

@@ -7,9 +7,9 @@ import de.alpharogroup.user.entities.Roles;
 import de.alpharogroup.user.entities.Users;
 
 /**
- * The interface {@link UsersService}.
+ * The interface {@link BaseUsersService}.
  */
-public interface UsersService extends BusinessService<Users, Integer> {
+public interface BaseUsersService extends BusinessService<Users, Integer> {
 
 	/**
 	 * Checks if a user exists with the given user name.

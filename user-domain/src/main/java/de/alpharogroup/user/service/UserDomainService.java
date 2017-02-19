@@ -14,7 +14,7 @@ import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.mapper.UsersMapper;
 import de.alpharogroup.user.repositories.UsersDao;
 import de.alpharogroup.user.service.api.UserService;
-import de.alpharogroup.user.service.api.UsersService;
+import de.alpharogroup.user.service.api.BaseUsersService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,11 +26,11 @@ import lombok.Setter;
 public class UserDomainService extends AbstractDomainService<Integer, User, Users, UsersDao, UsersMapper>
 		implements UserService {
 
-	/** The {@link UsersService}. */
+	/** The {@link BaseUsersService}. */
 	@Autowired
 	@Getter
 	@Setter
-	private UsersService usersService;
+	private BaseUsersService usersService;
 
 	/**
 	 * Sets the specific {@link UsersDao}.
