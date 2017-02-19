@@ -6,14 +6,14 @@ import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.service.rs.AbstractRestfulResource;
 import de.alpharogroup.user.domain.Role;
 import de.alpharogroup.user.domain.User;
-import de.alpharogroup.user.service.api.UserService;
-import de.alpharogroup.user.rest.api.UsersResource;
+import de.alpharogroup.user.service.api.BaseUserService;
+import de.alpharogroup.user.rest.api.BaseUsersResource;
 
-public class UsersRestResource
+public class BaseUsersRestResource
 	extends
- AbstractRestfulResource<Integer, User, UserService>
+ AbstractRestfulResource<Integer, User, BaseUserService>
 	implements
-		UsersResource
+		BaseUsersResource
 {
 
 	@Override

@@ -1,13 +1,13 @@
 package de.alpharogroup.user.rest.client;
 
 import de.alpharogroup.cxf.rest.client.AbstractRestClient;
-import de.alpharogroup.user.rest.api.AuthenticationsResource;
+import de.alpharogroup.user.rest.api.BaseAuthenticationsResource;
 import de.alpharogroup.user.rest.api.PermissionsResource;
 import de.alpharogroup.user.rest.api.RelationPermissionsResource;
 import de.alpharogroup.user.rest.api.ResetPasswordsResource;
 import de.alpharogroup.user.rest.api.RolesResource;
 import de.alpharogroup.user.rest.api.UserTokensResource;
-import de.alpharogroup.user.rest.api.UsersResource;
+import de.alpharogroup.user.rest.api.BaseUsersResource;
 import lombok.Getter;
 
 /**
@@ -18,10 +18,10 @@ public class UserManagementSystemRestClient extends AbstractRestClient
 {
 
 	/**
-	 * The {@link AuthenticationsResource}.
+	 * The {@link BaseAuthenticationsResource}.
 	 */
 	@Getter
-	private final AuthenticationsResource authenticationsResource;
+	private final BaseAuthenticationsResource authenticationsResource;
 
 	/**
 	 * The {@link PermissionsResource}.
@@ -48,14 +48,14 @@ public class UserManagementSystemRestClient extends AbstractRestClient
 	private final RolesResource rolesResource;
 
 	/**
-	 * The {@link UsersResource}.
+	 * The {@link BaseUsersResource}.
 	 */
 	@Getter
-	private final UsersResource usersResource;
+	private final BaseUsersResource usersResource;
 
 
 	/**
-	 * The {@link UsersResource}.
+	 * The {@link BaseUsersResource}.
 	 */
 	@Getter
 	private final UserTokensResource userTokensResource;
@@ -77,12 +77,12 @@ public class UserManagementSystemRestClient extends AbstractRestClient
 	public UserManagementSystemRestClient(final String baseUrl)
 	{
 		super(baseUrl);
-		authenticationsResource = newResource(AuthenticationsResource.class);
+		authenticationsResource = newResource(BaseAuthenticationsResource.class);
 		permissionsResource = newResource(PermissionsResource.class);
 		relationPermissionsResource = newResource(RelationPermissionsResource.class);
 		resetPasswordsResource = newResource(ResetPasswordsResource.class);
 		rolesResource = newResource(RolesResource.class);
-		usersResource = newResource(UsersResource.class);
+		usersResource = newResource(BaseUsersResource.class);
 		userTokensResource = newResource(UserTokensResource.class);
 	}
 

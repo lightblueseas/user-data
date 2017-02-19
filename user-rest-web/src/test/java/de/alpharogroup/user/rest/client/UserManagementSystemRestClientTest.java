@@ -44,12 +44,12 @@ import de.alpharogroup.user.domain.RelationPermission;
 import de.alpharogroup.user.domain.ResetPassword;
 import de.alpharogroup.user.domain.Role;
 import de.alpharogroup.user.domain.User;
-import de.alpharogroup.user.rest.api.AuthenticationsResource;
+import de.alpharogroup.user.rest.api.BaseAuthenticationsResource;
 import de.alpharogroup.user.rest.api.PermissionsResource;
 import de.alpharogroup.user.rest.api.RelationPermissionsResource;
 import de.alpharogroup.user.rest.api.ResetPasswordsResource;
 import de.alpharogroup.user.rest.api.RolesResource;
-import de.alpharogroup.user.rest.api.UsersResource;
+import de.alpharogroup.user.rest.api.BaseUsersResource;
 
 /**
  * The class {@link UserManagementSystemRestClientTest}.
@@ -63,9 +63,9 @@ public class UserManagementSystemRestClientTest
 
 	private UserManagementSystemRestClient restClient;
 
-	private AuthenticationsResource authenticationsResource;
+	private BaseAuthenticationsResource authenticationsResource;
 
-	private UsersResource usersResource;
+	private BaseUsersResource usersResource;
 
 	private PermissionsResource permissionsResource;
 
@@ -116,7 +116,7 @@ public class UserManagementSystemRestClientTest
 	}
 
 	/**
-	 * Test the {@link AuthenticationsResource}.
+	 * Test the {@link BaseAuthenticationsResource}.
 	 */
 	@Test(enabled = true)
 	public void testAuthenticationsResource()
@@ -261,7 +261,7 @@ public class UserManagementSystemRestClientTest
 	}
 
 	/**
-	 * Test the {@link UsersResource}.
+	 * Test the {@link BaseUsersResource}.
 	 */
 	@Test(enabled = false)
 	public void testUsersResource()

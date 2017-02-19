@@ -12,12 +12,12 @@
 
 	<jaxrs:server id="service" address="/">
 		<jaxrs:serviceBeans>
-			<ref bean="authenticationsResource" />
+			<ref bean="baseAuthenticationsResource" />
 			<ref bean="permissionsResource" />
 			<ref bean="relationPermissionsResource" />
 			<ref bean="resetPasswordsResource" />
 			<ref bean="rolesResource" />
-			<ref bean="usersResource" />
+			<ref bean="baseUsersResource" />
 			<ref bean="userTokensResource" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
@@ -28,11 +28,11 @@
 	</jaxrs:server>
 
 	<bean id="authenticationFilter" class="de.alpharogroup.user.filter.UserAuthenticationFilter">
-		<property name="userManagementService" ref="userManagementDomainService"></property>
+		<property name="userTokenService" ref="userTokenDomainService"></property>
 	</bean>
 	<!-- web resources -->
-	<bean id="authenticationsResource" class="de.alpharogroup.user.rest.AuthenticationsRestResource">
-		<property name="authenticationService" ref="authenticationDomainService"></property>
+	<bean id="baseAuthenticationsResource" class="de.alpharogroup.user.rest.BaseAuthenticationsRestResource">
+		<property name="baseAuthenticationsService" ref="baseAuthenticationDomainService"></property>
 	</bean>
 	
 	<bean id="permissionsResource" class="de.alpharogroup.user.rest.PermissionsRestResource">
@@ -50,8 +50,8 @@
 		<property name="domainService" ref="roleDomainService"></property>
 	</bean>
 	
-	<bean id="usersResource" class="de.alpharogroup.user.rest.UsersRestResource">
-		<property name="domainService" ref="userDomainService"></property>
+	<bean id="baseUsersResource" class="de.alpharogroup.user.rest.BaseUsersRestResource">
+		<property name="domainService" ref="baseUserDomainService"></property>
 	</bean>
 	
 	<bean id="userTokensResource" class="de.alpharogroup.user.rest.UserTokensRestResource">

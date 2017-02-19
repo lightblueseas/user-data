@@ -13,18 +13,18 @@ import de.alpharogroup.user.entities.Roles;
 import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.mapper.UsersMapper;
 import de.alpharogroup.user.repositories.UsersDao;
-import de.alpharogroup.user.service.api.UserService;
+import de.alpharogroup.user.service.api.BaseUserService;
 import de.alpharogroup.user.service.api.BaseUsersService;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * The class {@link UserDomainService}.
+ * The class {@link BaseUserDomainService}.
  */
 @Transactional
-@Service("userDomainService")
-public class UserDomainService extends AbstractDomainService<Integer, User, Users, UsersDao, UsersMapper>
-		implements UserService {
+@Service("baseUserDomainService")
+public class BaseUserDomainService extends AbstractDomainService<Integer, User, Users, UsersDao, UsersMapper>
+		implements BaseUserService {
 
 	/** The {@link BaseUsersService}. */
 	@Autowired

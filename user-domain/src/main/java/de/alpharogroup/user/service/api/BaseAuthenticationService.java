@@ -4,7 +4,7 @@ import de.alpharogroup.auth.models.AuthenticationErrors;
 import de.alpharogroup.auth.models.AuthenticationResult;
 import de.alpharogroup.user.domain.User;
 
-public interface AuthenticationService {
+public interface BaseAuthenticationService {
 
 	AuthenticationResult<User, AuthenticationErrors> authenticate(String emailOrUsername, String password);	
 

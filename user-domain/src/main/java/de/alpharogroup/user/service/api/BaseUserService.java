@@ -7,9 +7,9 @@ import de.alpharogroup.user.domain.Role;
 import de.alpharogroup.user.domain.User;
 
 /**
- * The interface {@link UserService}.
+ * The interface {@link BaseUserService}.
  */
-public interface UserService extends DomainService<Integer, User> {
+public interface BaseUserService extends DomainService<Integer, User> {
 
 	/**
 	 * Checks if a user exists with the given user name.

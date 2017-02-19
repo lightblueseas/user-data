@@ -12,12 +12,12 @@ import de.alpharogroup.auth.Credentials;
 
 
 /**
- * The interface {@link AuthenticationsResource} provides methods for authenticate users of a given application.
+ * The interface {@link BaseAuthenticationsResource} provides methods for authenticate users of a given application.
  */
 @Path("/auth/")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public interface AuthenticationsResource {
+public interface BaseAuthenticationsResource {
 
 	/**
 	 * Authenticate a user with the given {@link Credentials}.

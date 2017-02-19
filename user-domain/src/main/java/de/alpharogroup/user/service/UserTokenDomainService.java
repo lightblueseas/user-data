@@ -20,7 +20,7 @@ import lombok.Setter;
  * The class {@link UserTokenDomainService}.
  */
 @Transactional
-@Service("userDomainService")
+@Service("userTokenDomainService")
 public class UserTokenDomainService extends AbstractDomainService<Integer, UserToken, UserTokens, UserTokensDao, UserTokensMapper>
 		implements UserTokenService {
 

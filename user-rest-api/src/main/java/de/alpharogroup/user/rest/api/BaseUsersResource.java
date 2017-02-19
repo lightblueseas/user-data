@@ -16,12 +16,12 @@ import de.alpharogroup.user.domain.Role;
 import de.alpharogroup.user.domain.User;
 
 /**
- * The interface {@link UsersResource} provides methods for resolve users.
+ * The interface {@link BaseUsersResource} provides methods for resolve users.
  */
 @Path("/user/")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public interface UsersResource extends RestfulResource<Integer, User>
+public interface BaseUsersResource extends RestfulResource<Integer, User>
 {
 
 	@GET
