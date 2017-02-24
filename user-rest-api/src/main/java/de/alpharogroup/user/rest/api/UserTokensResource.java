@@ -23,7 +23,7 @@ public interface UserTokensResource extends RestfulResource<Integer, UserToken>
 	 * Find all token from the given user name.
 	 *
 	 * @param username the username
-	 * @return the found {@link UserTokens} or null if no result.
+	 * @return the found {@link UserToken} or null if no result.
 	 */
 	UserToken find(final String username);
 

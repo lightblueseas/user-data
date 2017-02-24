@@ -69,7 +69,7 @@ public interface PermissionsResource extends RestfulResource<Integer, Permission
 	 * Find all {@link Permission} objects by the given parameters.
 	 *
 	 * @param description the description
-	 * @param permissionName the permission name
+	 * @param name the permission name
 	 * @param shortcut the shortcut
 	 * @return the list of the found {@link Permission} objects.
 	 */

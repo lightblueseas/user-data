@@ -88,13 +88,11 @@ public interface RolesResource extends RestfulResource<Integer, Role> {
 	 * Creates a new {@link Role} object with the given arguments and save it.
 	 * If it does exists it will return the existing.
 	 *
-	 * @param rolename
-	 *            the role name.
-	 * @param description
-	 *            the description of the role.
-	 * @param permissions
-	 *            the permissions to set for the role.
-	 * @return the created or existing {@link Role} object.
+	 * @param roleToCreate
+	 *            the role to create. The left is the role name the middle is
+	 *            the description and right is the permissions to set for the
+	 *            role.
+	 * @return the new created or existing {@link Role} object.
 	 */
 	@POST
 	@Path("/new/with/perms")
