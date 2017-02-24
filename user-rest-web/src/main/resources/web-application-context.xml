@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                           http://cxf.apache.org/jaxrs
+                           http://cxf.apache.org/schemas/jaxrs.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<jaxrs:server id="service" address="/">
+		<jaxrs:serviceBeans>
+			<ref bean="baseAuthenticationsResource" />
+			<ref bean="permissionsResource" />
+			<ref bean="relationPermissionsResource" />
+			<ref bean="resetPasswordsResource" />
+			<ref bean="rolesResource" />
+			<ref bean="baseUsersResource" />
+			<ref bean="userTokensResource" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="authenticationFilter"/>
+			<bean id="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
+			<bean id="multipartProvider" class="org.apache.cxf.jaxrs.provider.MultipartProvider" />
+		</jaxrs:providers>
+	</jaxrs:server>
+
+	<bean id="authenticationFilter" class="de.alpharogroup.user.filter.UserAuthenticationFilter">
+		<property name="userTokenService" ref="userTokenDomainService"></property>
+	</bean>
+	<!-- web resources -->
+	<bean id="baseAuthenticationsResource" class="de.alpharogroup.user.rest.BaseAuthenticationsRestResource">
+		<property name="baseAuthenticationsService" ref="baseAuthenticationDomainService"></property>
+	</bean>
+	
+	<bean id="permissionsResource" class="de.alpharogroup.user.rest.PermissionsRestResource">
+		<property name="domainService" ref="permissionDomainService"></property>
+	</bean>
+	
+	<bean id="relationPermissionsResource" class="de.alpharogroup.user.rest.RelationPermissionsRestResource">
+		<property name="domainService" ref="relationPermissionDomainService"></property>
+	</bean>
+	<bean id="resetPasswordsResource" class="de.alpharogroup.user.rest.ResetPasswordsRestResource">
+		<property name="domainService" ref="resetPasswordDomainService"></property>
+	</bean>
+
+	<bean id="rolesResource" class="de.alpharogroup.user.rest.RolesRestResource">
+		<property name="domainService" ref="roleDomainService"></property>
+	</bean>
+	
+	<bean id="baseUsersResource" class="de.alpharogroup.user.rest.BaseUsersRestResource">
+		<property name="domainService" ref="baseUserDomainService"></property>
+	</bean>
+	
+	<bean id="userTokensResource" class="de.alpharogroup.user.rest.UserTokensRestResource">
+		<property name="domainService" ref="userTokenDomainService"></property>
+	</bean>
+
+</beans>
