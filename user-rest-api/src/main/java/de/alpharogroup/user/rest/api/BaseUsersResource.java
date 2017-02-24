@@ -64,10 +64,10 @@ public interface BaseUsersResource extends RestfulResource<Integer, User>
 
 	/**
 	 * Checks if the given {@link User} object is in the given {@link Role}
-	 * object.  The key is the user and the value the role.
+	 * object.  
 	 *
 	 * @param user
-	 *            the user
+	 *            The key is the user and the value the role.
 	 * @return true, if successful
 	 */
 	@POST
