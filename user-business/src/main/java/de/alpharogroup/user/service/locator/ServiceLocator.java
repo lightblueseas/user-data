@@ -1,10 +1,10 @@
 package de.alpharogroup.user.service.locator;
 
-import de.alpharogroup.user.management.service.api.PermissionsService;
-import de.alpharogroup.user.management.service.api.RelationPermissionsService;
-import de.alpharogroup.user.management.service.api.ResetPasswordsService;
-import de.alpharogroup.user.management.service.api.RolesService;
-import de.alpharogroup.user.management.service.api.UsersService;
+import de.alpharogroup.user.service.api.PermissionsService;
+import de.alpharogroup.user.service.api.RelationPermissionsService;
+import de.alpharogroup.user.service.api.ResetPasswordsService;
+import de.alpharogroup.user.service.api.RolesService;
+import de.alpharogroup.user.service.api.BaseUsersService;
 
 public interface ServiceLocator {
 
@@ -42,7 +42,7 @@ public interface ServiceLocator {
 	 * 
 	 * @return the users service
 	 */
-	UsersService getUsersService();
+	BaseUsersService getUsersService();
 
 	/**
 	 * Sets the permission business service.
@@ -83,6 +83,6 @@ public interface ServiceLocator {
 	 * @param usersService
 	 *            the new users business service
 	 */
-	void setUsersService(UsersService usersService);
+	void setUsersService(BaseUsersService usersService);
 
 }
