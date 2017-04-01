@@ -127,7 +127,7 @@ public class UserManagementSystemRestClientTest
 	/**
 	 * Test the {@link BaseAuthenticationsResource}.
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testAuthenticationsResource()
 	{
 		final Credentials credentials = Credentials.builder().username("michael.knight")
@@ -145,7 +145,7 @@ public class UserManagementSystemRestClientTest
 	/**
 	 * Test the {@link PermissionsResource}.
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testPermissionsResource()
 	{
 
@@ -171,7 +171,7 @@ public class UserManagementSystemRestClientTest
 	/**
 	 * Test the {@link RelationPermissionsResource}.
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testRelationPermissionsResource()
 	{
 		final RelationPermissionsResource resource = restClient.getRelationPermissionsResource();
@@ -213,7 +213,7 @@ public class UserManagementSystemRestClientTest
 	/**
 	 * Test the {@link ResetPasswordsResource}.
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testResetPasswordsResource()
 	{
 		final ResetPasswordsResource resource = restClient.getResetPasswordsResource();
@@ -246,7 +246,7 @@ public class UserManagementSystemRestClientTest
 	/**
 	 * Test the {@link RolesResource}.
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testRolesResource()
 	{
 		AssertJUnit.assertNotNull(rolesResource);
