@@ -24,8 +24,6 @@
  */
 package de.alpharogroup.user.rest.client;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -54,11 +52,11 @@ import de.alpharogroup.user.domain.ResetPassword;
 import de.alpharogroup.user.domain.Role;
 import de.alpharogroup.user.domain.User;
 import de.alpharogroup.user.rest.api.BaseAuthenticationsResource;
+import de.alpharogroup.user.rest.api.BaseUsersResource;
 import de.alpharogroup.user.rest.api.PermissionsResource;
 import de.alpharogroup.user.rest.api.RelationPermissionsResource;
 import de.alpharogroup.user.rest.api.ResetPasswordsResource;
 import de.alpharogroup.user.rest.api.RolesResource;
-import de.alpharogroup.user.rest.api.BaseUsersResource;
 
 /**
  * The class {@link UserManagementSystemRestClientTest}.
@@ -311,22 +309,6 @@ public class UserManagementSystemRestClientTest
 			}
 		}
 		return recommendedUser;
-	}
-
-	/**
-	 * Factory method for create new {@link ArrayList} and returns as {@link List}.
-	 *
-	 * @param <T>            the generic type
-	 * @param elements the elements to add in the new {@link ArrayList}.
-	 * @return the new {@link List}.
-	 * @deprecated use the synonyme method in ListExtensions.
-	 */
-	@Deprecated
-	@SafeVarargs
-	public static <T> List<T> newArrayList(final T... elements) {
-		final List<T> list = new ArrayList<>();
-		Collections.addAll(list, elements);
-		return list;
 	}
 
 }
