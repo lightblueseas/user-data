@@ -53,5 +53,6 @@ public class RelationPermission extends BaseDomainObject<Integer> {
 	/** The provider of the permissions. */
 	private User provider;	
 	/** The permissions of the role. */
+	@Builder.Default
 	private Set<Permission> permissions = new HashSet<>();
 }

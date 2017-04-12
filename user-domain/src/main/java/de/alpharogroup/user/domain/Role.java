@@ -49,6 +49,7 @@ public class Role extends BaseDomainObject<Integer> {
 	/** A description of the role. */
 	private String description;
 	/** The permissions of the role. */
+	@Builder.Default
 	private Set<Permission> permissions = new HashSet<>();
 	/** The name of the role. */
 	private String rolename;

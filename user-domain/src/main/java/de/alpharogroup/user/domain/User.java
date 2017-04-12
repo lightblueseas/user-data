@@ -54,6 +54,7 @@ public class User extends BaseDomainObject<Integer> {
 	/** The hash from the password hashed with sha512. */
 	private String pw;
 	/** The roles of the user. */
+	@Builder.Default
 	private Set<Role> roles = new HashSet<>();
 	/** The salt that is used to compute the hash. */
 	private String salt;

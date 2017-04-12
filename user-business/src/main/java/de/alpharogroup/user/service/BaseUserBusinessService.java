@@ -48,7 +48,7 @@ public class BaseUserBusinessService extends AbstractBusinessService<Users, Inte
 {
 
 	/** The Constant LOGGER. */
-	private final static Logger LOGGER = Logger.getLogger(BaseUserBusinessService.class.getName());
+	protected final static Logger LOGGER = Logger.getLogger(BaseUserBusinessService.class.getName());
 	/**
 	 *
 	 */
