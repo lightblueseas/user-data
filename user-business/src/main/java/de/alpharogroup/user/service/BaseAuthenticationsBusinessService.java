@@ -29,8 +29,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.alpharogroup.user.service.api.BaseAuthenticationsService;
-import de.alpharogroup.user.service.api.UserTokensService;
 import de.alpharogroup.user.service.api.BaseUsersService;
+import de.alpharogroup.user.service.api.UserTokensService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,7 +39,8 @@ import lombok.Setter;
  */
 @Transactional
 @Service("baseAuthenticationsService")
-public class BaseAuthenticationsBusinessService implements BaseAuthenticationsService {
+public class BaseAuthenticationsBusinessService implements BaseAuthenticationsService
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -57,7 +58,8 @@ public class BaseAuthenticationsBusinessService implements BaseAuthenticationsSe
 	private BaseUsersService usersService;
 
 	@Override
-	public String newAuthenticationToken(final String username) {
+	public String newAuthenticationToken(final String username)
+	{
 		return userTokensService.newAuthenticationToken(username);
 	}
 

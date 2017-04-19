@@ -24,13 +24,14 @@
  */
 package de.alpharogroup.user.service.locator;
 
+import de.alpharogroup.user.service.api.BaseUsersService;
 import de.alpharogroup.user.service.api.PermissionsService;
 import de.alpharogroup.user.service.api.RelationPermissionsService;
 import de.alpharogroup.user.service.api.ResetPasswordsService;
 import de.alpharogroup.user.service.api.RolesService;
-import de.alpharogroup.user.service.api.BaseUsersService;
 
-public interface ServiceLocator {
+public interface ServiceLocator
+{
 
 
 	/**
@@ -82,8 +83,7 @@ public interface ServiceLocator {
 	 * @param relationPermissionsService
 	 *            the new RelationPermissionsService
 	 */
-	void setRelationPermissionsService(
-			RelationPermissionsService relationPermissionsService);
+	void setRelationPermissionsService(RelationPermissionsService relationPermissionsService);
 
 	/**
 	 * Sets the reset passwords business service.

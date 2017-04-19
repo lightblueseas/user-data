@@ -30,7 +30,8 @@ import de.alpharogroup.db.dao.jpa.JpaEntityManagerDao;
 import de.alpharogroup.user.entities.Permissions;
 
 @Repository("permissionsDao")
-public class PermissionsDao extends JpaEntityManagerDao<Permissions, Integer> {
+public class PermissionsDao extends JpaEntityManagerDao<Permissions, Integer>
+{
 	/**
 	 * The serialVersionUID.
 	 */

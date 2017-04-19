@@ -36,12 +36,14 @@ import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.repositories.UsersDao;
 
 @ContextConfiguration(locations = "classpath:test-applicationContext.xml")
-public class UsersDaoTest extends AbstractTestNGSpringContextTests {
+public class UsersDaoTest extends AbstractTestNGSpringContextTests
+{
 	@Autowired
 	private UsersDao usersDao;
 
 	@Test(enabled = false)
-	public void getAllPermissions() {
+	public void getAllPermissions()
+	{
 		final List<Users> list = usersDao.findAll();
 		AssertJUnit.assertEquals(2, list.size());
 	}

@@ -45,8 +45,12 @@ import lombok.Setter;
  */
 @Transactional
 @Service("userTokenDomainService")
-public class UserTokenDomainService extends AbstractDomainService<Integer, UserToken, UserTokens, UserTokensDao, UserTokensMapper>
-		implements UserTokenService {
+public class UserTokenDomainService
+	extends
+		AbstractDomainService<Integer, UserToken, UserTokens, UserTokensDao, UserTokensMapper>
+	implements
+		UserTokenService
+{
 
 	/** The {@link UserTokensService}. */
 	@Autowired
@@ -54,26 +58,16 @@ public class UserTokenDomainService extends AbstractDomainService<Integer, UserT
 	@Setter
 	private UserTokensService userTokensService;
 
-	/**
-	 * Sets the specific {@link UserTokensDao}.
-	 *
-	 * @param usersDao
-	 *            the new {@link UserTokensDao}.
-	 */
-	@Autowired
-	public void setUserTokensDao(final UserTokensDao usersDao) {
-		setDao(usersDao);
+	@Override
+	public UserToken find(final String username)
+	{
+		return getMapper().toDomainObject(userTokensService.find(username));
 	}
 
-	/**
-	 * Sets the specific {@link UserTokensMapper}.
-	 *
-	 * @param mapper
-	 *            the new {@link UserTokensMapper}.
-	 */
-	@Autowired
-	public void setUserTokensMapper(final UserTokensMapper mapper) {
-		setMapper(mapper);
+	@Override
+	public List<UserToken> findAll(final String username)
+	{
+		return getMapper().toDomainObjects(userTokensService.findAll(username));
 	}
 
 	@Override
@@ -88,16 +82,28 @@ public class UserTokenDomainService extends AbstractDomainService<Integer, UserT
 		return userTokensService.isValid(token);
 	}
 
-	@Override
-	public UserToken find(final String username)
+	/**
+	 * Sets the specific {@link UserTokensDao}.
+	 *
+	 * @param usersDao
+	 *            the new {@link UserTokensDao}.
+	 */
+	@Autowired
+	public void setUserTokensDao(final UserTokensDao usersDao)
 	{
-		return getMapper().toDomainObject(userTokensService.find(username));
+		setDao(usersDao);
 	}
 
-	@Override
-	public List<UserToken> findAll(final String username)
+	/**
+	 * Sets the specific {@link UserTokensMapper}.
+	 *
+	 * @param mapper
+	 *            the new {@link UserTokensMapper}.
+	 */
+	@Autowired
+	public void setUserTokensMapper(final UserTokensMapper mapper)
 	{
-		return getMapper().toDomainObjects(userTokensService.findAll(username));
+		setMapper(mapper);
 	}
 
 }

@@ -66,6 +66,17 @@ import de.alpharogroup.user.rest.api.RolesResource;
 public class UserManagementSystemRestClientTest
 {
 
+	@BeforeClass
+	public static void setUpClass() throws Exception
+	{
+
+	}
+
+	@AfterClass
+	public static void tearDownClass() throws Exception
+	{
+	}
+
 	private TLSClientParameters tlsClientParameters;
 
 	private UserManagementSystemRestClient restClient;
@@ -78,20 +89,50 @@ public class UserManagementSystemRestClientTest
 
 	private User promoterUser;
 
+
 	private User recommendedUser;
 
 	private RolesResource rolesResource;
 
-
-	@BeforeClass
-	public static void setUpClass() throws Exception
+	private Role getAdminRole()
 	{
-
+		Role role = rolesResource.findRole("ADMIN");
+		if (role == null)
+		{
+			role = Role.builder().rolename("ADMIN").description("The admin role").build();
+			role = rolesResource.create(role);
+		}
+		return role;
 	}
 
-	@AfterClass
-	public static void tearDownClass() throws Exception
+	public User getPromoterUser()
 	{
+		if (promoterUser == null)
+		{
+			final String promoterEmail = "michael.knight@gmail.com";
+			promoterUser = usersResource.findUserWithUsername(promoterEmail);
+			if (promoterUser.getActive() == null)
+			{
+				promoterUser.setActive(true);
+				usersResource.update(promoterUser);
+			}
+		}
+		return promoterUser;
+	}
+
+	public User getRecommendedUser()
+	{
+		if (recommendedUser == null)
+		{
+			final String promoterEmail = "james.dean@gmail.com";
+			recommendedUser = usersResource.findUserWithUsername(promoterEmail);
+			if (recommendedUser.getActive() == null)
+			{
+				recommendedUser.setActive(true);
+				usersResource.update(recommendedUser);
+			}
+		}
+		return recommendedUser;
 	}
 
 	@BeforeMethod
@@ -101,8 +142,8 @@ public class UserManagementSystemRestClientTest
 		{
 			restClient = new UserManagementSystemRestClient(
 				AbstractRestClient.DEFAULT_BASE_HTTPS_URL);
-			tlsClientParameters = WebClientExtensions.newTLSClientParameters(PathFinder.getSrcTestResourcesDir(),
-				"keystore.ks", "JKS", "wicket");
+			tlsClientParameters = WebClientExtensions.newTLSClientParameters(
+				PathFinder.getSrcTestResourcesDir(), "keystore.ks", "JKS", "wicket");
 			authenticationsResource = restClient.getAuthenticationsResource();
 
 			usersResource = restClient.getUsersResource();
@@ -257,16 +298,6 @@ public class UserManagementSystemRestClientTest
 
 	}
 
-	private Role getAdminRole() {
-		Role role = rolesResource.findRole("ADMIN");
-		if (role == null)
-		{
-			role = Role.builder().rolename("ADMIN").description("The admin role").build();
-			role = rolesResource.create(role);
-		}
-		return role;
-	}
-
 	/**
 	 * Test the {@link BaseUsersResource}.
 	 */
@@ -279,36 +310,6 @@ public class UserManagementSystemRestClientTest
 		final User expected = usersResource.findUserWithUsername(username);
 
 		AssertJUnit.assertEquals(expected.getUsername(), "james.dean");
-	}
-
-	public User getPromoterUser()
-	{
-		if (promoterUser == null)
-		{
-			final String promoterEmail = "michael.knight@gmail.com";
-			promoterUser = usersResource.findUserWithUsername(promoterEmail);
-			if (promoterUser.getActive() == null)
-			{
-				promoterUser.setActive(true);
-				usersResource.update(promoterUser);
-			}
-		}
-		return promoterUser;
-	}
-
-	public User getRecommendedUser()
-	{
-		if (recommendedUser == null)
-		{
-			final String promoterEmail = "james.dean@gmail.com";
-			recommendedUser = usersResource.findUserWithUsername(promoterEmail);
-			if (recommendedUser.getActive() == null)
-			{
-				recommendedUser.setActive(true);
-				usersResource.update(recommendedUser);
-			}
-		}
-		return recommendedUser;
 	}
 
 }

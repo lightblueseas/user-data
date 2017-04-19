@@ -48,17 +48,12 @@ public class BaseUserBusinessService extends AbstractBusinessService<Users, Inte
 {
 
 	/** The Constant LOGGER. */
-	protected final static Logger LOGGER = Logger.getLogger(BaseUserBusinessService.class.getName());
+	protected final static Logger LOGGER = Logger
+		.getLogger(BaseUserBusinessService.class.getName());
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-
-	@Autowired
-	public void setUsersDao(final UsersDao usersDao)
-	{
-		setDao(usersDao);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -100,6 +95,12 @@ public class BaseUserBusinessService extends AbstractBusinessService<Users, Inte
 		query.setParameter("username", username);
 		final List<Users> users = query.getResultList();
 		return ListExtensions.getFirst(users);
+	}
+
+	@Autowired
+	public void setUsersDao(final UsersDao usersDao)
+	{
+		setDao(usersDao);
 	}
 
 	/**

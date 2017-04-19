@@ -46,8 +46,11 @@ import lombok.Setter;
 @Transactional
 @Service("permissionDomainService")
 public class PermissionDomainService
-		extends AbstractDomainService<Integer, Permission, Permissions, PermissionsDao, PermissionsMapper>
-		implements PermissionService {
+	extends
+		AbstractDomainService<Integer, Permission, Permissions, PermissionsDao, PermissionsMapper>
+	implements
+		PermissionService
+{
 
 	/** The {@link PermissionsService}. */
 	@Autowired
@@ -56,13 +59,64 @@ public class PermissionDomainService
 	private PermissionsService permissionsService;
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Permission createAndSavePermissions(final String name, final String description)
+	{
+		return getMapper()
+			.toDomainObject(permissionsService.createAndSavePermissions(name, description));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Permission createAndSavePermissions(final String name, final String description,
+		final String shortcut)
+	{
+		return getMapper().toDomainObject(
+			permissionsService.createAndSavePermissions(name, description, shortcut));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<Permission> find(final String description, final String permissionName,
+		final String shortcut)
+	{
+		return getMapper()
+			.toDomainObjects(permissionsService.find(description, permissionName, shortcut));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Permission findByName(final String name)
+	{
+		return getMapper().toDomainObject(permissionsService.findByName(name));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Permission findByShortcut(final String shortcut)
+	{
+		return getMapper().toDomainObject(permissionsService.findByShortcut(shortcut));
+	}
+
+	/**
 	 * Sets the specific {@link PermissionsDao}.
 	 *
 	 * @param permissionsDao
 	 *            the new {@link PermissionsDao}.
 	 */
 	@Autowired
-	public void setPermissionsDao(final PermissionsDao permissionsDao) {
+	public void setPermissionsDao(final PermissionsDao permissionsDao)
+	{
 		setDao(permissionsDao);
 	}
 
@@ -73,48 +127,9 @@ public class PermissionDomainService
 	 *            the new {@link PermissionsMapper}.
 	 */
 	@Autowired
-	public void setPermissionsMapper(final PermissionsMapper mapper) {
+	public void setPermissionsMapper(final PermissionsMapper mapper)
+	{
 		setMapper(mapper);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Permission createAndSavePermissions(final String name, final String description) {
-		return getMapper().toDomainObject(permissionsService.createAndSavePermissions(name, description));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Permission createAndSavePermissions(final String name, final String description, final String shortcut) {
-		return getMapper().toDomainObject(permissionsService.createAndSavePermissions(name, description, shortcut));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Permission findByShortcut(final String shortcut) {
-		return getMapper().toDomainObject(permissionsService.findByShortcut(shortcut));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Permission findByName(final String name) {
-		return getMapper().toDomainObject(permissionsService.findByName(name));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public List<Permission> find(final String description, final String permissionName, final String shortcut) {
-		return getMapper().toDomainObjects(permissionsService.find(description, permissionName, shortcut));
 	}
 
 }

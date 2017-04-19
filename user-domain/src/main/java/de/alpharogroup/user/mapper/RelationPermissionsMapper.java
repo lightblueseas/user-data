@@ -34,6 +34,9 @@ import de.alpharogroup.user.entities.RelationPermissions;
  * The class {@link RelationPermissionsMapper}.
  */
 @Component
-public class RelationPermissionsMapper extends AbstractEntityDOMapper<RelationPermissions, RelationPermission> {
+public class RelationPermissionsMapper
+	extends
+		AbstractEntityDOMapper<RelationPermissions, RelationPermission>
+{
 
 }

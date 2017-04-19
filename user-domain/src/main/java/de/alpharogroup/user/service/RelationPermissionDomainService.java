@@ -31,12 +31,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.alpharogroup.service.domain.AbstractDomainService;
-import de.alpharogroup.user.entities.RelationPermissions;
-import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.domain.Permission;
 import de.alpharogroup.user.domain.RelationPermission;
 import de.alpharogroup.user.domain.User;
 import de.alpharogroup.user.entities.Permissions;
+import de.alpharogroup.user.entities.RelationPermissions;
+import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.mapper.RelationPermissionsMapper;
 import de.alpharogroup.user.repositories.RelationPermissionsDao;
 import de.alpharogroup.user.service.api.RelationPermissionService;
@@ -49,9 +49,12 @@ import lombok.Setter;
  */
 @Transactional
 @Service("relationPermissionDomainService")
-public class RelationPermissionDomainService extends
+public class RelationPermissionDomainService
+	extends
 		AbstractDomainService<Integer, RelationPermission, RelationPermissions, RelationPermissionsDao, RelationPermissionsMapper>
-		implements RelationPermissionService {
+	implements
+		RelationPermissionService
+{
 
 	/** The {@link RelationPermissionsService}. */
 	@Autowired
@@ -60,78 +63,12 @@ public class RelationPermissionDomainService extends
 	private RelationPermissionsService relationPermissionsService;
 
 	/**
-	 * Sets the specific {@link RelationPermissionsDao}.
-	 *
-	 * @param relationPermissionsDao
-	 *            the new {@link RelationPermissionsDao}.
-	 */
-	@Autowired
-	public void setRelationPermissionsDao(final RelationPermissionsDao relationPermissionsDao) {
-		setDao(relationPermissionsDao);
-	}
-
-	/**
-	 * Sets the specific {@link RelationPermissionsMapper}.
-	 *
-	 * @param mapper
-	 *            the new {@link RelationPermissionsMapper}.
-	 */
-	@Autowired
-	public void setRelationPermissionsMapper(final RelationPermissionsMapper mapper) {
-		setMapper(mapper);
-	}
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public RelationPermission findRelationPermissions(final User provider, final User subscriber) {
-		final Users providers = getMapper().map(provider, Users.class);
-		final Users subscribers = getMapper().map(subscriber, Users.class);
-		final RelationPermission relationPermission = getMapper().toDomainObject(relationPermissionsService.findRelationPermissions(providers, subscribers));
-		return relationPermission;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public RelationPermission findRelationPermissions(final User provider, final User subscriber, final Permission permission) {
-		final Users providers = getMapper().map(provider, Users.class);
-		final Users subscribers = getMapper().map(subscriber, Users.class);
-		final Permissions permissions = getMapper().map(permission, Permissions.class);
-		final RelationPermission relationPermission = getMapper().toDomainObject(relationPermissionsService.findRelationPermissions(providers, subscribers, permissions));
-		return relationPermission;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public List<RelationPermission> find(final User provider, final User subscriber) {
-		final Users providers = getMapper().map(provider, Users.class);
-		final Users subscribers = getMapper().map(subscriber, Users.class);
-		final List<RelationPermission> relationPermissions = getMapper().toDomainObjects(relationPermissionsService.find(providers, subscribers));
-		return relationPermissions;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public List<RelationPermission> find(final User provider, final User subscriber, final Permission permission) {
-		final Users providers = getMapper().map(provider, Users.class);
-		final Users subscribers = getMapper().map(subscriber, Users.class);
-		final Permissions permissions = getMapper().map(permission, Permissions.class);
-		final List<RelationPermission> relationPermissions = getMapper().toDomainObjects(relationPermissionsService.find(providers, subscribers, permissions));
-		return relationPermissions;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void addPermission(final User provider, final User subscriber, final Permission permission) {
+	public void addPermission(final User provider, final User subscriber,
+		final Permission permission)
+	{
 		final Users providers = getMapper().map(provider, Users.class);
 		final Users subscribers = getMapper().map(subscriber, Users.class);
 		final Permissions permissions = getMapper().map(permission, Permissions.class);
@@ -142,7 +79,77 @@ public class RelationPermissionDomainService extends
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void removePermission(final User provider, final User subscriber, final Permission permission) {
+	public List<RelationPermission> find(final User provider, final User subscriber)
+	{
+		final Users providers = getMapper().map(provider, Users.class);
+		final Users subscribers = getMapper().map(subscriber, Users.class);
+		final List<RelationPermission> relationPermissions = getMapper()
+			.toDomainObjects(relationPermissionsService.find(providers, subscribers));
+		return relationPermissions;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<RelationPermission> find(final User provider, final User subscriber,
+		final Permission permission)
+	{
+		final Users providers = getMapper().map(provider, Users.class);
+		final Users subscribers = getMapper().map(subscriber, Users.class);
+		final Permissions permissions = getMapper().map(permission, Permissions.class);
+		final List<RelationPermission> relationPermissions = getMapper()
+			.toDomainObjects(relationPermissionsService.find(providers, subscribers, permissions));
+		return relationPermissions;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public RelationPermission findRelationPermissions(final User provider, final User subscriber)
+	{
+		final Users providers = getMapper().map(provider, Users.class);
+		final Users subscribers = getMapper().map(subscriber, Users.class);
+		final RelationPermission relationPermission = getMapper().toDomainObject(
+			relationPermissionsService.findRelationPermissions(providers, subscribers));
+		return relationPermission;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public RelationPermission findRelationPermissions(final User provider, final User subscriber,
+		final Permission permission)
+	{
+		final Users providers = getMapper().map(provider, Users.class);
+		final Users subscribers = getMapper().map(subscriber, Users.class);
+		final Permissions permissions = getMapper().map(permission, Permissions.class);
+		final RelationPermission relationPermission = getMapper()
+			.toDomainObject(relationPermissionsService.findRelationPermissions(providers,
+				subscribers, permissions));
+		return relationPermission;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void removeAllPermissions(final User provider, final User subscriber)
+	{
+		final Users providers = getMapper().map(provider, Users.class);
+		final Users subscribers = getMapper().map(subscriber, Users.class);
+		relationPermissionsService.removeAllPermissions(providers, subscribers);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void removePermission(final User provider, final User subscriber,
+		final Permission permission)
+	{
 		final Users providers = getMapper().map(provider, Users.class);
 		final Users subscribers = getMapper().map(subscriber, Users.class);
 		final Permissions permissions = getMapper().map(permission, Permissions.class);
@@ -150,13 +157,27 @@ public class RelationPermissionDomainService extends
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Sets the specific {@link RelationPermissionsDao}.
+	 *
+	 * @param relationPermissionsDao
+	 *            the new {@link RelationPermissionsDao}.
 	 */
-	@Override
-	public void removeAllPermissions(final User provider, final User subscriber) {
-		final Users providers = getMapper().map(provider, Users.class);
-		final Users subscribers = getMapper().map(subscriber, Users.class);
-		relationPermissionsService.removeAllPermissions(providers, subscribers);
+	@Autowired
+	public void setRelationPermissionsDao(final RelationPermissionsDao relationPermissionsDao)
+	{
+		setDao(relationPermissionsDao);
+	}
+
+	/**
+	 * Sets the specific {@link RelationPermissionsMapper}.
+	 *
+	 * @param mapper
+	 *            the new {@link RelationPermissionsMapper}.
+	 */
+	@Autowired
+	public void setRelationPermissionsMapper(final RelationPermissionsMapper mapper)
+	{
+		setMapper(mapper);
 	}
 
 }

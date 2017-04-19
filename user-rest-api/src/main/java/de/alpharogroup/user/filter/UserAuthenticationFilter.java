@@ -34,16 +34,15 @@ import com.google.common.collect.MapMaker;
 
 import de.alpharogroup.service.rs.filter.AuthenticationFilter;
 import de.alpharogroup.user.service.api.UserTokenService;
-
 import lombok.Getter;
 import lombok.Setter;
 
-public class UserAuthenticationFilter extends AuthenticationFilter {
+public class UserAuthenticationFilter extends AuthenticationFilter
+{
 
 	@SuppressWarnings("deprecation")
 	private final Map<String, LocalDateTime> validTokens = new MapMaker()
-	.expiration(30, TimeUnit.MINUTES)
-	.makeMap();
+		.expiration(30, TimeUnit.MINUTES).makeMap();
 
 	@Autowired
 	@Getter
@@ -51,10 +50,13 @@ public class UserAuthenticationFilter extends AuthenticationFilter {
 	private UserTokenService userTokenService;
 
 	@Override
-	protected String onValidateToken(final String token) throws Exception {
-		if (!validTokens.containsKey(token)) {
-			if (!userTokenService.isValid(token)) {
-				throw new Exception("UnauthorizedException with Token:"+ token);
+	protected String onValidateToken(final String token) throws Exception
+	{
+		if (!validTokens.containsKey(token))
+		{
+			if (!userTokenService.isValid(token))
+			{
+				throw new Exception("UnauthorizedException with Token:" + token);
 			}
 		}
 		validTokens.put(token, LocalDateTime.now());

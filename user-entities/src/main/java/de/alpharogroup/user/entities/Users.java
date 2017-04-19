@@ -41,17 +41,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The entity class {@link Users} is keeping the information for the users from
- * the application.
+ * The entity class {@link Users} is keeping the information for the users from the application.
  */
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Users 
-extends BaseEntity<Integer> 
-implements Cloneable {
+public class Users extends BaseEntity<Integer> implements Cloneable
+{
 
 	/** The serial Version UID. */
 	private static final long serialVersionUID = 1L;
@@ -65,9 +63,10 @@ implements Cloneable {
 	@Column(name = "pw", length = 1024)
 	private String pw;
 	/** The roles of the user. */
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name = "user_roles", joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") }, 
-	inverseJoinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") })
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_roles", joinColumns = {
+			@JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "role_id", referencedColumnName = "id") })
 	private Set<Roles> roles = new HashSet<Roles>();
 	/** The salt that is used to compute the hash. */
 	@Column(name = "salt", length = 8)
@@ -83,11 +82,13 @@ implements Cloneable {
 	 *            the role
 	 * @return true, if successful
 	 */
-	public boolean addRole(Roles role) {
+	public boolean addRole(Roles role)
+	{
 		return roles.add(role);
 	}
 
-	public boolean isActive() {
+	public boolean isActive()
+	{
 		return getActive();
 	}
 

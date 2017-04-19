@@ -33,10 +33,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.alpharogroup.service.domain.AbstractDomainService;
-import de.alpharogroup.user.entities.Roles;
 import de.alpharogroup.user.domain.Permission;
 import de.alpharogroup.user.domain.Role;
 import de.alpharogroup.user.entities.Permissions;
+import de.alpharogroup.user.entities.Roles;
 import de.alpharogroup.user.mapper.RolesMapper;
 import de.alpharogroup.user.repositories.RolesDao;
 import de.alpharogroup.user.service.api.RoleService;
@@ -49,8 +49,12 @@ import lombok.Setter;
  */
 @Transactional
 @Service("roleDomainService")
-public class RoleDomainService extends AbstractDomainService<Integer, Role, Roles, RolesDao, RolesMapper>
-		implements RoleService {
+public class RoleDomainService
+	extends
+		AbstractDomainService<Integer, Role, Roles, RolesDao, RolesMapper>
+	implements
+		RoleService
+{
 
 	/** The {@link RolesService}. */
 	@Autowired
@@ -59,32 +63,42 @@ public class RoleDomainService extends AbstractDomainService<Integer, Role, Role
 	private RolesService rolesService;
 
 	/**
-	 * Sets the specific {@link RolesDao}.
-	 *
-	 * @param rolesDao
-	 *            the new {@link RolesDao}.
+	 * {@inheritDoc}
 	 */
-	@Autowired
-	public void setRolesDao(final RolesDao rolesDao) {
-		setDao(rolesDao);
-	}
-
-	/**
-	 * Sets the specific {@link RolesMapper}.
-	 *
-	 * @param mapper
-	 *            the new {@link RolesMapper}.
-	 */
-	@Autowired
-	public void setRolesMapper(final RolesMapper mapper) {
-		setMapper(mapper);
+	@Override
+	public Role createAndSaveRole(final String rolename, final String description)
+	{
+		return getMapper().toDomainObject(rolesService.createAndSaveRole(rolename, description));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<Permission> findAllPermissions(final Role role) {
+	public Role createAndSaveRole(final String rolename, final String description,
+		final Set<Permission> permissions)
+	{
+		final List<Permissions> perms = getMapper().map(permissions, Permissions.class);
+		final Roles roles = rolesService.createAndSaveRole(rolename, description,
+			new HashSet<>(perms));
+		return getMapper().toDomainObject(roles);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean exists(final String rolename)
+	{
+		return rolesService.exists(rolename);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<Permission> findAllPermissions(final Role role)
+	{
 		final Roles roles = getMapper().toEntity(role);
 		final List<Permissions> permissions = rolesService.findAllPermissions(roles);
 		final List<Permission> perms = getMapper().map(permissions, Permission.class);
@@ -95,7 +109,8 @@ public class RoleDomainService extends AbstractDomainService<Integer, Role, Role
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Role findRole(final String rolename) {
+	public Role findRole(final String rolename)
+	{
 		return getMapper().toDomainObject(rolesService.findRole(rolename));
 	}
 
@@ -103,34 +118,33 @@ public class RoleDomainService extends AbstractDomainService<Integer, Role, Role
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<Role> findRoles(final String rolename) {
+	public List<Role> findRoles(final String rolename)
+	{
 		return getMapper().toDomainObjects(rolesService.findRoles(rolename));
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Sets the specific {@link RolesDao}.
+	 *
+	 * @param rolesDao
+	 *            the new {@link RolesDao}.
 	 */
-	@Override
-	public boolean exists(final String rolename) {
-		return rolesService.exists(rolename);
+	@Autowired
+	public void setRolesDao(final RolesDao rolesDao)
+	{
+		setDao(rolesDao);
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Sets the specific {@link RolesMapper}.
+	 *
+	 * @param mapper
+	 *            the new {@link RolesMapper}.
 	 */
-	@Override
-	public Role createAndSaveRole(final String rolename, final String description) {
-		return getMapper().toDomainObject(rolesService.createAndSaveRole(rolename, description));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Role createAndSaveRole(final String rolename, final String description, final Set<Permission> permissions) {
-		final List<Permissions> perms = getMapper().map(permissions, Permissions.class);
-		final Roles roles = rolesService.createAndSaveRole(rolename, description, new HashSet<>(perms));
-		return getMapper().toDomainObject(roles);
+	@Autowired
+	public void setRolesMapper(final RolesMapper mapper)
+	{
+		setMapper(mapper);
 	}
 
 }

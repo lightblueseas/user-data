@@ -26,17 +26,17 @@ package de.alpharogroup.user.rest.client;
 
 import de.alpharogroup.cxf.rest.client.AbstractRestClient;
 import de.alpharogroup.user.rest.api.BaseAuthenticationsResource;
+import de.alpharogroup.user.rest.api.BaseUsersResource;
 import de.alpharogroup.user.rest.api.PermissionsResource;
 import de.alpharogroup.user.rest.api.RelationPermissionsResource;
 import de.alpharogroup.user.rest.api.ResetPasswordsResource;
 import de.alpharogroup.user.rest.api.RolesResource;
 import de.alpharogroup.user.rest.api.UserTokensResource;
-import de.alpharogroup.user.rest.api.BaseUsersResource;
 import lombok.Getter;
 
 /**
- * The class {@link UserManagementSystemRestClient} is a rest client for the
- * dating-system that are persists in the database.
+ * The class {@link UserManagementSystemRestClient} is a rest client for the dating-system that are
+ * persists in the database.
  */
 public class UserManagementSystemRestClient extends AbstractRestClient
 {

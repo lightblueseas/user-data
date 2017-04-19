@@ -40,18 +40,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The entity class {@link ResetPasswords} is keeping the
- * information for reseting the password from a user. Data will be inserted when
- * a user forgets his password and enter his data in the form.
+ * The entity class {@link ResetPasswords} is keeping the information for reseting the password from
+ * a user. Data will be inserted when a user forgets his password and enter his data in the form.
  */
 @Entity
 @Table(name = "reset_passwords")
 @Getter
 @Setter
 @NoArgsConstructor
-public class ResetPasswords 
-extends BaseEntity<Integer>
-implements Cloneable {
+public class ResetPasswords extends BaseEntity<Integer> implements Cloneable
+{
 
 	/** The serial Version UID */
 	private static final long serialVersionUID = -4437962692764644264L;
@@ -68,5 +66,5 @@ implements Cloneable {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id", nullable = true, referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_RESET_PASSWORDS_USER_ID"))
 	private Users user;
-	
+
 }

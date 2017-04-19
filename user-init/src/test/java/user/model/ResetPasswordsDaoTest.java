@@ -23,6 +23,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package user.model;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +35,15 @@ import de.alpharogroup.user.entities.ResetPasswords;
 import de.alpharogroup.user.repositories.ResetPasswordsDao;
 
 @ContextConfiguration(locations = "classpath:test-applicationContext.xml")
-public class ResetPasswordsDaoTest extends AbstractTestNGSpringContextTests {
+public class ResetPasswordsDaoTest extends AbstractTestNGSpringContextTests
+{
 	@Autowired
 	private ResetPasswordsDao resetPasswordsDao;
 
 
-
-	@Test(enabled=false)
-	public void testFindAll() {
+	@Test(enabled = false)
+	public void testFindAll()
+	{
 		final List<ResetPasswords> all = resetPasswordsDao.findAll();
 		System.out.println(all);
 	}

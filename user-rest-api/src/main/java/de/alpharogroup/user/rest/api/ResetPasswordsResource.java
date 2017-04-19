@@ -48,7 +48,9 @@ public interface ResetPasswordsResource extends RestfulResource<Integer, ResetPa
 	/**
 	 * Find the entry from the given {@link User} and the given generated password(hashed).
 	 *
-	 * @param userAndGenPw  The key is the user and the value the generated password(hashed) is the confirmationCode from the url query string.
+	 * @param userAndGenPw
+	 *            The key is the user and the value the generated password(hashed) is the
+	 *            confirmationCode from the url query string.
 	 * @return the entry of the found {@link ResetPassword} or null if not found
 	 */
 	@POST
@@ -58,7 +60,8 @@ public interface ResetPasswordsResource extends RestfulResource<Integer, ResetPa
 	/**
 	 * Finds the {@link ResetPassword} object from the given {@link User} object.
 	 *
-	 * @param user the user
+	 * @param user
+	 *            the user
 	 * @return the entry of the found {@link ResetPassword} or null if not found
 	 */
 	@POST

@@ -39,8 +39,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The entity class {@link UserTokens} is keeping the information for
- * the token of users.
+ * The entity class {@link UserTokens} is keeping the information for the token of users.
  */
 @Entity
 @Table(name = "user_tokens")
@@ -50,9 +49,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserTokens 
-extends BaseEntity<Integer>
-implements Cloneable {
+public class UserTokens extends BaseEntity<Integer> implements Cloneable
+{
 
 	/** The serial Version UID */
 	private static final long serialVersionUID = 1L;
@@ -60,7 +58,7 @@ implements Cloneable {
 	@Column(name = "username", length = 256, unique = true)
 	private String username;
 	/** The token for the user. */
-	@Column(name = "token", length = 128, unique=true)
+	@Column(name = "token", length = 128, unique = true)
 	private String token;
 	/** The expiration date. */
 	private Date expiry;

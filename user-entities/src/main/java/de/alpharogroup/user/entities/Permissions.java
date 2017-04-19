@@ -28,24 +28,23 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import de.alpharogroup.auth.interfaces.Permission;
+import de.alpharogroup.db.entity.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import de.alpharogroup.auth.interfaces.Permission;
-import de.alpharogroup.db.entity.BaseEntity;
 
 /**
- * The entity class {@link Permissions} is keeping the information for
- * the permissions of a role or roles.
+ * The entity class {@link Permissions} is keeping the information for the permissions of a role or
+ * roles.
  */
 @Entity
 @Table(name = "permissions")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Permissions
-extends BaseEntity<Integer>
-implements Permission, Cloneable {
+public class Permissions extends BaseEntity<Integer> implements Permission, Cloneable
+{
 
 	/** The serial Version UID */
 	private static final long serialVersionUID = 1L;
@@ -53,10 +52,10 @@ implements Permission, Cloneable {
 	@Column(name = "description", length = 64)
 	private String description;
 	/** The name from the permission. */
-	@Column(name = "permissionName", length = 64, unique=true)
+	@Column(name = "permissionName", length = 64, unique = true)
 	private String permissionName;
 	/** A shortcut for the permission. */
-	@Column(name = "shortcut", length = 10, unique=true)
+	@Column(name = "shortcut", length = 10, unique = true)
 	private String shortcut;
 
 }

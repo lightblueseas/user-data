@@ -46,7 +46,8 @@ public class PermissionsRestResource
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Permission createAndSavePermissions(final String name, final String description) {
+	public Permission createAndSavePermissions(final String name, final String description)
+	{
 		return getDomainService().createAndSavePermissions(name, description);
 	}
 
@@ -54,7 +55,9 @@ public class PermissionsRestResource
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Permission createAndSavePermissions(final String name, final String description, final String shortcut) {
+	public Permission createAndSavePermissions(final String name, final String description,
+		final String shortcut)
+	{
 		return getDomainService().createAndSavePermissions(name, description, shortcut);
 	}
 
@@ -62,15 +65,17 @@ public class PermissionsRestResource
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Permission findByShortcut(final String shortcut) {
-		return getDomainService().findByShortcut(shortcut);
+	public List<Permission> find(final String description, final String name, final String shortcut)
+	{
+		return getDomainService().find(description, name, shortcut);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Permission findByName(final String name) {
+	public Permission findByName(final String name)
+	{
 		return getDomainService().findByName(name);
 	}
 
@@ -78,8 +83,9 @@ public class PermissionsRestResource
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<Permission> find(final String description, final String name, final String shortcut) {
-		return getDomainService().find(description, name, shortcut);
+	public Permission findByShortcut(final String shortcut)
+	{
+		return getDomainService().findByShortcut(shortcut);
 	}
 
 }

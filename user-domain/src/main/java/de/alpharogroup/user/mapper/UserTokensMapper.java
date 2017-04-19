@@ -34,6 +34,7 @@ import de.alpharogroup.user.entities.UserTokens;
  * The class {@link UserTokensMapper}.
  */
 @Component
-public class UserTokensMapper extends AbstractEntityDOMapper<UserTokens, UserToken> {
+public class UserTokensMapper extends AbstractEntityDOMapper<UserTokens, UserToken>
+{
 
 }

@@ -41,17 +41,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The entity class {@link Roles} is keeping the information for the user
- * roles.
+ * The entity class {@link Roles} is keeping the information for the user roles.
  */
 @Entity
 @Table(name = "roles")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Roles 
-extends BaseEntity<Integer>
-implements Cloneable {
+public class Roles extends BaseEntity<Integer> implements Cloneable
+{
 
 	/** The serial Version UID. */
 	private static final long serialVersionUID = -5523602462337489391L;
@@ -59,24 +57,25 @@ implements Cloneable {
 	@Column(name = "description", length = 64)
 	private String description;
 	/** The permissions of the role. */
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(
-		      name="role_permissions",
-		      joinColumns={@JoinColumn(name="role_id", referencedColumnName="id")},
-		      inverseJoinColumns={@JoinColumn(name="permission_id", referencedColumnName="id")})
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "role_permissions", joinColumns = {
+			@JoinColumn(name = "role_id", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "permission_id", referencedColumnName = "id") })
 	private Set<Permissions> permissions = new HashSet<Permissions>();
 	/** The name of the role. */
 	@Column(name = "rolename", length = 64, unique = true)
 	private String rolename;
-	
+
 	/**
 	 * Adds the permission.
 	 *
-	 * @param permission the permission
+	 * @param permission
+	 *            the permission
 	 * @return true, if successful
 	 */
-	public boolean addPermission(Permissions permission){
+	public boolean addPermission(Permissions permission)
+	{
 		return permissions.add(permission);
 	}
-	
+
 }

@@ -34,6 +34,7 @@ import de.alpharogroup.user.entities.ResetPasswords;
  * The class {@link ResetPasswordsMapper}.
  */
 @Component
-public class ResetPasswordsMapper extends AbstractEntityDOMapper<ResetPasswords, ResetPassword> {
+public class ResetPasswordsMapper extends AbstractEntityDOMapper<ResetPasswords, ResetPassword>
+{
 
 }

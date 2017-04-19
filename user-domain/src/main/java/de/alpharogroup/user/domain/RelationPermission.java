@@ -38,20 +38,21 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString(callSuper=true)
-@EqualsAndHashCode(callSuper=true)
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RelationPermission extends BaseDomainObject<Integer> {
+public class RelationPermission extends BaseDomainObject<Integer>
+{
 	/**
 	 * The serial Version UID
 	 */
 	private static final long serialVersionUID = 1L;
 	/** The subscriber of the permissions. */
-	private User subscriber;	
+	private User subscriber;
 	/** The provider of the permissions. */
-	private User provider;	
+	private User provider;
 	/** The permissions of the role. */
 	@Builder.Default
 	private Set<Permission> permissions = new HashSet<>();

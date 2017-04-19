@@ -30,7 +30,8 @@ import de.alpharogroup.db.dao.jpa.JpaEntityManagerDao;
 import de.alpharogroup.user.entities.Roles;
 
 @Repository("rolesDao")
-public class RolesDao extends JpaEntityManagerDao<Roles, Integer>{
+public class RolesDao extends JpaEntityManagerDao<Roles, Integer>
+{
 	/**
 	 * The serialVersionUID.
 	 */

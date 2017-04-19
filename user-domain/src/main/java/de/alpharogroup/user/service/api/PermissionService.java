@@ -32,13 +32,16 @@ import de.alpharogroup.user.domain.Permission;
 /**
  * The interface {@link PermissionService}.
  */
-public interface PermissionService extends DomainService<Integer, Permission> {
+public interface PermissionService extends DomainService<Integer, Permission>
+{
 
 	/**
 	 * Factory method to create and save a new {@link Permission} object.
 	 *
-	 * @param name the name
-	 * @param description the description
+	 * @param name
+	 *            the name
+	 * @param description
+	 *            the description
 	 * @return the new {@link Permission} object.
 	 */
 	Permission createAndSavePermissions(String name, String description);
@@ -46,38 +49,44 @@ public interface PermissionService extends DomainService<Integer, Permission> {
 	/**
 	 * Factory method to create and save a new {@link Permission} object.
 	 *
-	 * @param name the name
-	 * @param description the description
-	 * @param shortcut the shortcut
+	 * @param name
+	 *            the name
+	 * @param description
+	 *            the description
+	 * @param shortcut
+	 *            the shortcut
 	 * @return the new {@link Permission} object.
 	 */
-	Permission createAndSavePermissions(String name, String description,
-			String shortcut);
-	
+	Permission createAndSavePermissions(String name, String description, String shortcut);
+
 	/**
-	 * Find the {@link Permission} object by the given shortcut.
+	 * Find all {@link Permission} objects by the given parameters.
 	 *
-	 * @param shortcut the shortcut
-	 * @return the found {@link Permission} object or null if not.
+	 * @param description
+	 *            the description
+	 * @param permissionName
+	 *            the permission name
+	 * @param shortcut
+	 *            the shortcut
+	 * @return the list of the found {@link Permission} objects.
 	 */
-	Permission findByShortcut(String shortcut);
-	
+	List<Permission> find(String description, String permissionName, String shortcut);
+
 	/**
 	 * Find the {@link Permission} object by the given name.
 	 *
-	 * @param name the name
+	 * @param name
+	 *            the name
 	 * @return the found {@link Permission} object or null if not.
 	 */
 	Permission findByName(String name);
 
 	/**
-	 * Find all {@link Permission} objects by the given parameters.
+	 * Find the {@link Permission} object by the given shortcut.
 	 *
-	 * @param description the description
-	 * @param permissionName the permission name
-	 * @param shortcut the shortcut
-	 * @return the list of the found {@link Permission} objects.
+	 * @param shortcut
+	 *            the shortcut
+	 * @return the found {@link Permission} object or null if not.
 	 */
-	List<Permission> find(String description, String permissionName,
-			String shortcut);
+	Permission findByShortcut(String shortcut);
 }

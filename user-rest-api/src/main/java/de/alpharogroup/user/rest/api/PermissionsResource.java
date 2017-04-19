@@ -48,57 +48,68 @@ public interface PermissionsResource extends RestfulResource<Integer, Permission
 	/**
 	 * Factory method to create and save a new {@link Permission} object.
 	 *
-	 * @param name the name
-	 * @param description the description
+	 * @param name
+	 *            the name
+	 * @param description
+	 *            the description
 	 * @return the new {@link Permission} object.
 	 */
 	@GET
 	@Path("/new/perm/{name}/{description}/")
-	Permission createAndSavePermissions(@PathParam("name") String name, @PathParam("description")String description);
+	Permission createAndSavePermissions(@PathParam("name") String name,
+		@PathParam("description") String description);
 
 	/**
 	 * Factory method to create and save a new {@link Permission} object.
 	 *
-	 * @param name the name
-	 * @param description the description
-	 * @param shortcut the shortcut
+	 * @param name
+	 *            the name
+	 * @param description
+	 *            the description
+	 * @param shortcut
+	 *            the shortcut
 	 * @return the new {@link Permission} object.
 	 */
 	@GET
 	@Path("/new/perm/{name}/{description}/{shortcut}/")
-	Permission createAndSavePermissions(@PathParam("name")String name, @PathParam("description")String description,
-			@PathParam("shortcut")String shortcut);
-
-	/**
-	 * Find the {@link Permission} object by the given shortcut.
-	 *
-	 * @param shortcut the shortcut
-	 * @return the found {@link Permission} object or null if not.
-	 */
-	@GET
-	@Path("/find/by/shortcut/{shortcut}/")
-	Permission findByShortcut(@PathParam("shortcut")String shortcut);
-
-	/**
-	 * Find the {@link Permission} object by the given name.
-	 *
-	 * @param name the name
-	 * @return the found {@link Permission} object or null if not.
-	 */
-	@GET
-	@Path("/find/by/name/{name}/")
-	Permission findByName(@PathParam("name")String name);
+	Permission createAndSavePermissions(@PathParam("name") String name,
+		@PathParam("description") String description, @PathParam("shortcut") String shortcut);
 
 	/**
 	 * Find all {@link Permission} objects by the given parameters.
 	 *
-	 * @param description the description
-	 * @param name the permission name
-	 * @param shortcut the shortcut
+	 * @param description
+	 *            the description
+	 * @param name
+	 *            the permission name
+	 * @param shortcut
+	 *            the shortcut
 	 * @return the list of the found {@link Permission} objects.
 	 */
 	@GET
 	@Path("/find/by/description/{description}/{name}/{shortcut}/")
-	List<Permission> find(@PathParam("description")String description, @PathParam("name")String name,
-			@PathParam("shortcut")String shortcut);
+	List<Permission> find(@PathParam("description") String description,
+		@PathParam("name") String name, @PathParam("shortcut") String shortcut);
+
+	/**
+	 * Find the {@link Permission} object by the given name.
+	 *
+	 * @param name
+	 *            the name
+	 * @return the found {@link Permission} object or null if not.
+	 */
+	@GET
+	@Path("/find/by/name/{name}/")
+	Permission findByName(@PathParam("name") String name);
+
+	/**
+	 * Find the {@link Permission} object by the given shortcut.
+	 *
+	 * @param shortcut
+	 *            the shortcut
+	 * @return the found {@link Permission} object or null if not.
+	 */
+	@GET
+	@Path("/find/by/shortcut/{shortcut}/")
+	Permission findByShortcut(@PathParam("shortcut") String shortcut);
 }

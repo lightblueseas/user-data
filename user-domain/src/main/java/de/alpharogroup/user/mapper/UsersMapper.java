@@ -34,6 +34,7 @@ import de.alpharogroup.user.entities.Users;
  * The class {@link UsersMapper}.
  */
 @Component
-public class UsersMapper extends AbstractEntityDOMapper<Users, User> {
+public class UsersMapper extends AbstractEntityDOMapper<Users, User>
+{
 
 }

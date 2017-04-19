@@ -28,8 +28,8 @@ import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.service.rs.AbstractRestfulResource;
 import de.alpharogroup.user.domain.ResetPassword;
 import de.alpharogroup.user.domain.User;
-import de.alpharogroup.user.service.api.ResetPasswordService;
 import de.alpharogroup.user.rest.api.ResetPasswordsResource;
+import de.alpharogroup.user.service.api.ResetPasswordService;
 
 public class ResetPasswordsRestResource
 	extends
@@ -39,12 +39,14 @@ public class ResetPasswordsRestResource
 {
 
 	@Override
-	public ResetPassword findResetPassword(final KeyValuePair<User, String> userAndGenPw) {
+	public ResetPassword findResetPassword(final KeyValuePair<User, String> userAndGenPw)
+	{
 		return getDomainService().findResetPassword(userAndGenPw.getKey(), userAndGenPw.getValue());
 	}
 
 	@Override
-	public ResetPassword findResetPassword(final User user) {
+	public ResetPassword findResetPassword(final User user)
+	{
 		return getDomainService().findResetPassword(user);
 	}
 

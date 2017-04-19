@@ -38,12 +38,13 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString(callSuper=true)
-@EqualsAndHashCode(callSuper=true)
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Role extends BaseDomainObject<Integer> {
+public class Role extends BaseDomainObject<Integer>
+{
 	/** The serial Version UID. */
 	private static final long serialVersionUID = 1L;
 	/** A description of the role. */

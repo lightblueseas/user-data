@@ -40,7 +40,8 @@ import lombok.Setter;
 
 @Transactional
 @Service("baseAuthenticationDomainService")
-public class BaseAuthenticationDomainService implements BaseAuthenticationService {
+public class BaseAuthenticationDomainService implements BaseAuthenticationService
+{
 
 
 	/** The {@link BaseAuthenticationsService}. */
@@ -52,18 +53,21 @@ public class BaseAuthenticationDomainService implements BaseAuthenticationServic
 	private final UsersMapper mapper = new UsersMapper();
 
 	@Override
-	public AuthenticationResult<User, AuthenticationErrors> authenticate(final String emailOrUsername, final String password) {
-		final AuthenticationResult<Users, AuthenticationErrors> originalAuthenticationResult = baseAuthenticationsService.authenticate(emailOrUsername, password);
-		final AuthenticationResult<User, AuthenticationErrors> authenticationResult =
-				AuthenticationResult.<User, AuthenticationErrors>builder()
-				.validationErrors(originalAuthenticationResult.getValidationErrors())
-				.user(mapper.toDomainObject(originalAuthenticationResult.getUser()))
-				.build();
+	public AuthenticationResult<User, AuthenticationErrors> authenticate(
+		final String emailOrUsername, final String password)
+	{
+		final AuthenticationResult<Users, AuthenticationErrors> originalAuthenticationResult = baseAuthenticationsService
+			.authenticate(emailOrUsername, password);
+		final AuthenticationResult<User, AuthenticationErrors> authenticationResult = AuthenticationResult
+			.<User, AuthenticationErrors> builder()
+			.validationErrors(originalAuthenticationResult.getValidationErrors())
+			.user(mapper.toDomainObject(originalAuthenticationResult.getUser())).build();
 		return authenticationResult;
 	}
 
 	@Override
-	public String newAuthenticationToken(final String username) {
+	public String newAuthenticationToken(final String username)
+	{
 		return baseAuthenticationsService.newAuthenticationToken(username);
 	}
 

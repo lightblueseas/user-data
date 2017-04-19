@@ -30,7 +30,8 @@ import de.alpharogroup.db.dao.jpa.JpaEntityManagerDao;
 import de.alpharogroup.user.entities.ResetPasswords;
 
 @Repository("resetPasswordsDao")
-public class ResetPasswordsDao extends JpaEntityManagerDao<ResetPasswords, Integer>{
+public class ResetPasswordsDao extends JpaEntityManagerDao<ResetPasswords, Integer>
+{
 	/**
 	 * The serialVersionUID.
 	 */

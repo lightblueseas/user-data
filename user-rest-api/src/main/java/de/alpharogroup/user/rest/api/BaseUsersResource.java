@@ -48,11 +48,6 @@ import de.alpharogroup.user.domain.User;
 public interface BaseUsersResource extends RestfulResource<Integer, User>
 {
 
-	@GET
-	@Path("/findall/")
-	List<User> findAll();
-
-
 	/**
 	 * Checks if a user exists with the given user name.
 	 *
@@ -62,7 +57,12 @@ public interface BaseUsersResource extends RestfulResource<Integer, User>
 	 */
 	@GET
 	@Path("/exists/user/with/username/{username}")
-	boolean existsUserWithUsername(@PathParam("username")String username);
+	boolean existsUserWithUsername(@PathParam("username") String username);
+
+
+	@GET
+	@Path("/findall/")
+	List<User> findAll();
 
 	/**
 	 * Find roles from the given {@link User}.
@@ -87,8 +87,7 @@ public interface BaseUsersResource extends RestfulResource<Integer, User>
 	User findUserWithUsername(final String username);
 
 	/**
-	 * Checks if the given {@link User} object is in the given {@link Role}
-	 * object.  
+	 * Checks if the given {@link User} object is in the given {@link Role} object.
 	 *
 	 * @param user
 	 *            The key is the user and the value the role.

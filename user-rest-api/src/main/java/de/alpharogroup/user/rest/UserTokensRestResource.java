@@ -28,17 +28,17 @@ import java.util.List;
 
 import de.alpharogroup.service.rs.AbstractRestfulResource;
 import de.alpharogroup.user.domain.UserToken;
-import de.alpharogroup.user.service.api.UserTokenService;
 import de.alpharogroup.user.rest.api.UserTokensResource;
+import de.alpharogroup.user.service.api.UserTokenService;
 
 /**
  * The class {@link UserTokensRestResource}.
  */
 public class UserTokensRestResource
 	extends
- AbstractRestfulResource<Integer, UserToken, UserTokenService>
+		AbstractRestfulResource<Integer, UserToken, UserTokenService>
 	implements
-	UserTokensResource
+		UserTokensResource
 {
 
 	/**

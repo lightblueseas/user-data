@@ -33,7 +33,8 @@ import de.alpharogroup.user.domain.User;
 /**
  * The interface {@link BaseUserService}.
  */
-public interface BaseUserService extends DomainService<Integer, User> {
+public interface BaseUserService extends DomainService<Integer, User>
+{
 
 	/**
 	 * Checks if a user exists with the given user name.
@@ -63,8 +64,7 @@ public interface BaseUserService extends DomainService<Integer, User> {
 	User findUserWithUsername(final String username);
 
 	/**
-	 * Checks if the given {@link User} object is in the given {@link Role}
-	 * object.
+	 * Checks if the given {@link User} object is in the given {@link Role} object.
 	 *
 	 * @param user
 	 *            the user

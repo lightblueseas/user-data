@@ -45,9 +45,12 @@ import lombok.Setter;
  */
 @Transactional
 @Service("resetPasswordDomainService")
-public class ResetPasswordDomainService extends
+public class ResetPasswordDomainService
+	extends
 		AbstractDomainService<Integer, ResetPassword, ResetPasswords, ResetPasswordsDao, ResetPasswordsMapper>
-		implements ResetPasswordService {
+	implements
+		ResetPasswordService
+{
 
 	/** The {@link ResetPasswordsService}. */
 	@Autowired
@@ -56,13 +59,39 @@ public class ResetPasswordDomainService extends
 	private ResetPasswordsService resetPasswordsService;
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public ResetPassword findResetPassword(final User user)
+	{
+		final Users users = getMapper().map(user, Users.class);
+		final ResetPasswords resetPasswords = resetPasswordsService.findResetPassword(users);
+		final ResetPassword resetPassword = getMapper().toDomainObject(resetPasswords);
+		return resetPassword;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public ResetPassword findResetPassword(final User user, final String generatedPassword)
+	{
+		final Users users = getMapper().map(user, Users.class);
+		final ResetPasswords resetPasswords = resetPasswordsService.findResetPassword(users,
+			generatedPassword);
+		final ResetPassword resetPassword = getMapper().toDomainObject(resetPasswords);
+		return resetPassword;
+	}
+
+	/**
 	 * Sets the specific {@link ResetPasswordsDao}.
 	 *
 	 * @param resetPasswordsDao
 	 *            the new {@link ResetPasswordsDao}.
 	 */
 	@Autowired
-	public void setResetPasswordsDao(final ResetPasswordsDao resetPasswordsDao) {
+	public void setResetPasswordsDao(final ResetPasswordsDao resetPasswordsDao)
+	{
 		setDao(resetPasswordsDao);
 	}
 
@@ -73,29 +102,8 @@ public class ResetPasswordDomainService extends
 	 *            the new {@link ResetPasswordsMapper}.
 	 */
 	@Autowired
-	public void setResetPasswordsMapper(final ResetPasswordsMapper mapper) {
+	public void setResetPasswordsMapper(final ResetPasswordsMapper mapper)
+	{
 		setMapper(mapper);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public ResetPassword findResetPassword(final User user, final String generatedPassword) {
-		final Users users = getMapper().map(user, Users.class);
-		final ResetPasswords resetPasswords = resetPasswordsService.findResetPassword(users, generatedPassword);
-		final ResetPassword resetPassword = getMapper().toDomainObject(resetPasswords);
-		return resetPassword;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public ResetPassword findResetPassword(final User user) {
-		final Users users = getMapper().map(user, Users.class);
-		final ResetPasswords resetPasswords = resetPasswordsService.findResetPassword(users);
-		final ResetPassword resetPassword = getMapper().toDomainObject(resetPasswords);
-		return resetPassword;
 	}
 }

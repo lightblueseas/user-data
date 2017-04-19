@@ -33,7 +33,8 @@ import de.alpharogroup.user.entities.Users;
 /**
  * The interface {@link BaseUsersService}.
  */
-public interface BaseUsersService extends BusinessService<Users, Integer> {
+public interface BaseUsersService extends BusinessService<Users, Integer>
+{
 
 	/**
 	 * Checks if a user exists with the given user name.
@@ -63,8 +64,7 @@ public interface BaseUsersService extends BusinessService<Users, Integer> {
 	Users findUserWithUsername(final String username);
 
 	/**
-	 * Checks if the given {@link Users} object is in the given {@link Roles}
-	 * object.
+	 * Checks if the given {@link Users} object is in the given {@link Roles} object.
 	 * 
 	 * @param user
 	 *            the user
