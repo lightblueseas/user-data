@@ -1,3 +1,27 @@
+/**
+ * The MIT License
+ *
+ * Copyright (C) 2015 Asterios Raptis
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *  *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *  *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 package de.alpharogroup.user.service.api;
 
 import de.alpharogroup.db.service.api.BusinessService;
@@ -7,23 +31,27 @@ import de.alpharogroup.user.entities.Users;
 /**
  * The interface {@link ResetPasswordsService}.
  */
-public interface ResetPasswordsService extends BusinessService<ResetPasswords, Integer>{
-
-	/**
-	 * Find the entry from the given {@link Users} and the given generated password(hashed).
-	 *
-	 * @param user the user
-	 * @param generatedPassword the generated password(hashed) is the confirmationCode from the url query string
-	 * @return the entry of the found {@link ResetPasswords} or null if not found
-	 */
-	ResetPasswords findResetPassword(Users user, String generatedPassword);
-
+public interface ResetPasswordsService extends BusinessService<ResetPasswords, Integer>
+{
 
 	/**
 	 * Finds the {@link ResetPasswords} object from the given {@link Users} object.
 	 *
-	 * @param user the user
+	 * @param user
+	 *            the user
 	 * @return the entry of the found {@link ResetPasswords} or null if not found
 	 */
 	ResetPasswords findResetPassword(Users user);
+
+
+	/**
+	 * Find the entry from the given {@link Users} and the given generated password(hashed).
+	 *
+	 * @param user
+	 *            the user
+	 * @param generatedPassword
+	 *            the generated password(hashed) is the confirmationCode from the url query string
+	 * @return the entry of the found {@link ResetPasswords} or null if not found
+	 */
+	ResetPasswords findResetPassword(Users user, String generatedPassword);
 }

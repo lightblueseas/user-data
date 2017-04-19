@@ -1,22 +1,29 @@
-/*
- * Copyright 2015 Alpha Ro Group UG (haftungsbeschrängt).
+/**
+ * The MIT License
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Copyright (C) 2015 Asterios Raptis
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *  *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *  *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package de.alpharogroup.user.rest.client;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -45,11 +52,11 @@ import de.alpharogroup.user.domain.ResetPassword;
 import de.alpharogroup.user.domain.Role;
 import de.alpharogroup.user.domain.User;
 import de.alpharogroup.user.rest.api.BaseAuthenticationsResource;
+import de.alpharogroup.user.rest.api.BaseUsersResource;
 import de.alpharogroup.user.rest.api.PermissionsResource;
 import de.alpharogroup.user.rest.api.RelationPermissionsResource;
 import de.alpharogroup.user.rest.api.ResetPasswordsResource;
 import de.alpharogroup.user.rest.api.RolesResource;
-import de.alpharogroup.user.rest.api.BaseUsersResource;
 
 /**
  * The class {@link UserManagementSystemRestClientTest}.
@@ -58,6 +65,17 @@ import de.alpharogroup.user.rest.api.BaseUsersResource;
  */
 public class UserManagementSystemRestClientTest
 {
+
+	@BeforeClass
+	public static void setUpClass() throws Exception
+	{
+
+	}
+
+	@AfterClass
+	public static void tearDownClass() throws Exception
+	{
+	}
 
 	private TLSClientParameters tlsClientParameters;
 
@@ -71,20 +89,50 @@ public class UserManagementSystemRestClientTest
 
 	private User promoterUser;
 
+
 	private User recommendedUser;
 
 	private RolesResource rolesResource;
 
-
-	@BeforeClass
-	public static void setUpClass() throws Exception
+	private Role getAdminRole()
 	{
-
+		Role role = rolesResource.findRole("ADMIN");
+		if (role == null)
+		{
+			role = Role.builder().rolename("ADMIN").description("The admin role").build();
+			role = rolesResource.create(role);
+		}
+		return role;
 	}
 
-	@AfterClass
-	public static void tearDownClass() throws Exception
+	public User getPromoterUser()
 	{
+		if (promoterUser == null)
+		{
+			final String promoterEmail = "michael.knight@gmail.com";
+			promoterUser = usersResource.findUserWithUsername(promoterEmail);
+			if (promoterUser.getActive() == null)
+			{
+				promoterUser.setActive(true);
+				usersResource.update(promoterUser);
+			}
+		}
+		return promoterUser;
+	}
+
+	public User getRecommendedUser()
+	{
+		if (recommendedUser == null)
+		{
+			final String promoterEmail = "james.dean@gmail.com";
+			recommendedUser = usersResource.findUserWithUsername(promoterEmail);
+			if (recommendedUser.getActive() == null)
+			{
+				recommendedUser.setActive(true);
+				usersResource.update(recommendedUser);
+			}
+		}
+		return recommendedUser;
 	}
 
 	@BeforeMethod
@@ -94,8 +142,8 @@ public class UserManagementSystemRestClientTest
 		{
 			restClient = new UserManagementSystemRestClient(
 				AbstractRestClient.DEFAULT_BASE_HTTPS_URL);
-			tlsClientParameters = WebClientExtensions.newTLSClientParameters(PathFinder.getSrcTestResourcesDir(),
-				"keystore.ks", "JKS", "wicket");
+			tlsClientParameters = WebClientExtensions.newTLSClientParameters(
+				PathFinder.getSrcTestResourcesDir(), "keystore.ks", "JKS", "wicket");
 			authenticationsResource = restClient.getAuthenticationsResource();
 
 			usersResource = restClient.getUsersResource();
@@ -118,7 +166,7 @@ public class UserManagementSystemRestClientTest
 	/**
 	 * Test the {@link BaseAuthenticationsResource}.
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testAuthenticationsResource()
 	{
 		final Credentials credentials = Credentials.builder().username("michael.knight")
@@ -136,7 +184,7 @@ public class UserManagementSystemRestClientTest
 	/**
 	 * Test the {@link PermissionsResource}.
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testPermissionsResource()
 	{
 
@@ -162,7 +210,7 @@ public class UserManagementSystemRestClientTest
 	/**
 	 * Test the {@link RelationPermissionsResource}.
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testRelationPermissionsResource()
 	{
 		final RelationPermissionsResource resource = restClient.getRelationPermissionsResource();
@@ -204,7 +252,7 @@ public class UserManagementSystemRestClientTest
 	/**
 	 * Test the {@link ResetPasswordsResource}.
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testResetPasswordsResource()
 	{
 		final ResetPasswordsResource resource = restClient.getResetPasswordsResource();
@@ -237,7 +285,7 @@ public class UserManagementSystemRestClientTest
 	/**
 	 * Test the {@link RolesResource}.
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testRolesResource()
 	{
 		AssertJUnit.assertNotNull(rolesResource);
@@ -248,16 +296,6 @@ public class UserManagementSystemRestClientTest
 		AssertJUnit.assertNotNull(permissions);
 
 
-	}
-
-	private Role getAdminRole() {
-		Role role = rolesResource.findRole("ADMIN");
-		if (role == null)
-		{
-			role = Role.builder().rolename("ADMIN").description("The admin role").build();
-			role = rolesResource.create(role);
-		}
-		return role;
 	}
 
 	/**
@@ -272,52 +310,6 @@ public class UserManagementSystemRestClientTest
 		final User expected = usersResource.findUserWithUsername(username);
 
 		AssertJUnit.assertEquals(expected.getUsername(), "james.dean");
-	}
-
-	public User getPromoterUser()
-	{
-		if (promoterUser == null)
-		{
-			final String promoterEmail = "michael.knight@gmail.com";
-			promoterUser = usersResource.findUserWithUsername(promoterEmail);
-			if (promoterUser.getActive() == null)
-			{
-				promoterUser.setActive(true);
-				usersResource.update(promoterUser);
-			}
-		}
-		return promoterUser;
-	}
-
-	public User getRecommendedUser()
-	{
-		if (recommendedUser == null)
-		{
-			final String promoterEmail = "james.dean@gmail.com";
-			recommendedUser = usersResource.findUserWithUsername(promoterEmail);
-			if (recommendedUser.getActive() == null)
-			{
-				recommendedUser.setActive(true);
-				usersResource.update(recommendedUser);
-			}
-		}
-		return recommendedUser;
-	}
-
-	/**
-	 * Factory method for create new {@link ArrayList} and returns as {@link List}.
-	 *
-	 * @param <T>            the generic type
-	 * @param elements the elements to add in the new {@link ArrayList}.
-	 * @return the new {@link List}.
-	 * @deprecated use the synonyme method in ListExtensions.
-	 */
-	@Deprecated
-	@SafeVarargs
-	public static <T> List<T> newArrayList(final T... elements) {
-		final List<T> list = new ArrayList<>();
-		Collections.addAll(list, elements);
-		return list;
 	}
 
 }

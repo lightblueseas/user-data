@@ -1,3 +1,27 @@
+/**
+ * The MIT License
+ *
+ * Copyright (C) 2015 Asterios Raptis
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *  *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *  *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 package de.alpharogroup.user.service;
 
 import java.time.LocalDateTime;
@@ -20,23 +44,25 @@ import de.alpharogroup.user.service.api.UserTokensService;
 
 @Transactional
 @Service("userTokensService")
-public class UserTokensBusinessService extends AbstractBusinessService<UserTokens, Integer, UserTokensDao> implements UserTokensService {
+public class UserTokensBusinessService
+	extends
+		AbstractBusinessService<UserTokens, Integer, UserTokensDao>
+	implements
+		UserTokensService
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	@Autowired
-	public void setUserTokensDao(UserTokensDao userTokensDao) {
-		setDao(userTokensDao);
-	}
-
 	@Override
-	public UserTokens find(String username) {
+	public UserTokens find(String username)
+	{
 		return ListExtensions.getFirst(findAll(username));
 	}
 
 	@Override
-	public List<UserTokens> findAll(String username) {
+	public List<UserTokens> findAll(String username)
+	{
 		List<UserTokens> userTokens = null;
 		UserTokens from = Torpedo.from(UserTokens.class);
 		Torpedo.where(from.getUsername()).eq(username);
@@ -46,16 +72,19 @@ public class UserTokensBusinessService extends AbstractBusinessService<UserToken
 	}
 
 	@Override
-	public String getAutheticationToken(String username) {
+	public String getAutheticationToken(String username)
+	{
 		UserTokens token = find(username);
-		if (token != null) {
+		if (token != null)
+		{
 			return token.getToken();
 		}
 		return null;
 	}
 
 	@Override
-	public boolean isValid(String token) {
+	public boolean isValid(String token)
+	{
 		List<UserTokens> userTokens = null;
 		UserTokens from = Torpedo.from(UserTokens.class);
 		Torpedo.where(from.getToken()).eq(token);
@@ -64,22 +93,25 @@ public class UserTokensBusinessService extends AbstractBusinessService<UserToken
 		boolean valid = CollectionUtils.isNotEmpty(userTokens);
 		return valid;
 	}
-	
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String newAuthenticationToken(String username) {
+	public String newAuthenticationToken(String username)
+	{
 		UserTokens userTokens = find(username);
-		if (userTokens == null) {
+		if (userTokens == null)
+		{
 			userTokens = merge(newUserTokens(username));
 		}
 		// check if expired
 		Date now = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
-		if (userTokens.getExpiry().before(now)) {
+		if (userTokens.getExpiry().before(now))
+		{
 			// expires in one year
-			Date expiry = Date.from(LocalDateTime.now().plusMonths(12).atZone(ZoneId.systemDefault()).toInstant());
+			Date expiry = Date.from(
+				LocalDateTime.now().plusMonths(12).atZone(ZoneId.systemDefault()).toInstant());
 			// create a token
 			String token = RandomExtensions.randomToken();
 			userTokens.setExpiry(expiry);
@@ -89,20 +121,30 @@ public class UserTokensBusinessService extends AbstractBusinessService<UserToken
 		return userTokens.getToken();
 	}
 
+
 	/**
 	 * New user tokens.
 	 *
-	 * @param username the username
+	 * @param username
+	 *            the username
 	 * @return the user tokens
 	 */
-	private UserTokens newUserTokens(String username) {
+	private UserTokens newUserTokens(String username)
+	{
 		UserTokens userTokens;
 		// expires in one year
-		Date expiry = Date.from(LocalDateTime.now().plusMonths(12).atZone(ZoneId.systemDefault()).toInstant());
+		Date expiry = Date
+			.from(LocalDateTime.now().plusMonths(12).atZone(ZoneId.systemDefault()).toInstant());
 		// create a token
 		String token = RandomExtensions.randomToken();
 		userTokens = UserTokens.builder().expiry(expiry).username(username).token(token).build();
 		return userTokens;
+	}
+
+	@Autowired
+	public void setUserTokensDao(UserTokensDao userTokensDao)
+	{
+		setDao(userTokensDao);
 	}
 
 }
