@@ -8,7 +8,7 @@ The project holds backend data for simple user management.
 
 The source code comes under the liberal MIT License, making user-data great for all types of applications with users or accounts.
 
-# Build status and latest maven version
+# Build status
 [![Build Status](https://travis-ci.org/lightblueseas/user-data.svg?branch=master)](https://travis-ci.org/lightblueseas/user-data)
 
 ## Maven Central
