@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
 import de.alpharogroup.user.entities.ResetPasswords;
 import de.alpharogroup.user.repositories.ResetPasswordsDao;
 
-@ContextConfiguration(locations = "classpath:test-applicationContext.xml")
+@ContextConfiguration(locations = "classpath:test-h2-applicationContext.xml")
 public class ResetPasswordsDaoTest extends AbstractTestNGSpringContextTests
 {
 	@Autowired
