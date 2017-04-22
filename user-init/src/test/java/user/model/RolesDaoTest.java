@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
 import de.alpharogroup.user.entities.Roles;
 import de.alpharogroup.user.repositories.RolesDao;
 
-@ContextConfiguration(locations = "classpath:test-applicationContext.xml")
+@ContextConfiguration(locations = "classpath:test-h2-applicationContext.xml")
 public class RolesDaoTest extends AbstractTestNGSpringContextTests
 {
 	@Autowired

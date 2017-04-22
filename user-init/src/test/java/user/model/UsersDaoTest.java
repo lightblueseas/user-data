@@ -35,7 +35,7 @@ import org.testng.annotations.Test;
 import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.repositories.UsersDao;
 
-@ContextConfiguration(locations = "classpath:test-applicationContext.xml")
+@ContextConfiguration(locations = "classpath:test-h2-applicationContext.xml")
 public class UsersDaoTest extends AbstractTestNGSpringContextTests
 {
 	@Autowired

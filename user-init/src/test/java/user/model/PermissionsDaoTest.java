@@ -35,7 +35,7 @@ import org.testng.annotations.Test;
 import de.alpharogroup.user.entities.Permissions;
 import de.alpharogroup.user.repositories.PermissionsDao;
 
-@ContextConfiguration(locations = "classpath:test-applicationContext.xml")
+@ContextConfiguration(locations = "classpath:test-h2-applicationContext.xml")
 public class PermissionsDaoTest extends AbstractTestNGSpringContextTests
 {
 
