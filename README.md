@@ -7,7 +7,7 @@ The project holds backend data for simple user management.
 
 # ERD-Diagramm
 
-An erd-diagramm for this database is provided at ![here](https://github.com/lightblueseas/user-data/blob/develop/user-init/src/main/resources/erd/erd-diagramm-users.png)
+The erd-diagramm for this database looks as follows: ![here](https://github.com/lightblueseas/user-data/blob/develop/user-init/src/main/resources/erd/erd-diagramm-users.png)
 
 ## License
 
