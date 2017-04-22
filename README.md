@@ -4,6 +4,11 @@ Parent project that holds module projects for the persistence of user data.
 
 The project holds backend data for simple user management.
 
+
+# ERD-Diagramm
+
+An erd-diagramm for this database is provided at ![here](https://github.com/lightblueseas/user-data/blob/develop/user-init/src/main/resources/erd/erd-diagramm-users.png)
+
 ## License
 
 The source code comes under the liberal MIT License, making user-data great for all types of applications with users or accounts.
