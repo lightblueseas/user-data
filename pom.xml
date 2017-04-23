@@ -77,8 +77,6 @@
 		<auth-security.version>${mystic-crypt.version}</auth-security.version>
 		<!-- NEW EXTENSIONS LIB versions -->
 		<email-tails.version>4.15.0</email-tails.version>
-		<!-- CONNECTION POOL versions -->
-		<bonecp.version>0.8.0.RELEASE</bonecp.version>
 	</properties>
 
 	<dependencyManagement>
@@ -131,12 +129,6 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>email-tails</artifactId>
 				<version>${email-tails.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.jolbox</groupId>
-				<artifactId>bonecp</artifactId>
-				<version>${bonecp.version}</version>
 			</dependency>
 
 		</dependencies>
