@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="de.alpharogroup.user.entities" v="1.5.4" xs="false" id="_14929427627201" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity xre="false" sm="false" abs="false" class="Roles" visibile="true" minimized="false" rootElement="_14929427627201" id="_14929427627452">
+        <inf>java.lang.Cloneable</inf>
+        <annotation n="@lombok.Getter"/>
+        <annotation n="@lombok.Setter"/>
+        <annotation n="@lombok.NoArgsConstructor"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="description" id="_14929427627473">
+                <jpa:column name="description" unique="false" nullable="true" insertable="true" updatable="true" length="64"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="rolename" id="_14929427627505">
+                <jpa:column name="rolename" unique="true" nullable="true" insertable="true" updatable="true" length="64"/>
+            </basic>
+            <many-to-many own="true" collection-type="java.util.Set" connected-entity-id="_149294276279719" fetch="EAGER" visibile="true" name="permissions" id="_14929427627474">
+                <join-table name="role_permissions">
+                    <jpa:join-column name="role_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                    <jpa:inverse-join-column name="permission_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </join-table>
+            </many-to-many>
+        </jpa:attributes>
+        <jpa:table name="roles"/>
+    </jpa:entity>
+    <jpa:entity xre="false" sm="false" abs="false" class="RelationPermissions" visibile="true" minimized="false" rootElement="_14929427627201" id="_14929427627658">
+        <inf>java.lang.Cloneable</inf>
+        <annotation n="@lombok.Getter"/>
+        <annotation n="@lombok.Setter"/>
+        <annotation n="@lombok.NoArgsConstructor"/>
+        <jpa:attributes>
+            <many-to-one primaryKey="false" connected-entity-id="_149294276278112" visibile="true" name="subscriber" id="_14929427627659">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+                <join-column name="subscriber_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_149294276278112" visibile="true" name="provider" id="_149294276276510">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+                <join-column name="provider_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </many-to-one>
+            <many-to-many own="true" collection-type="java.util.Set" connected-entity-id="_149294276279719" fetch="EAGER" visibile="true" name="permissions" id="_149294276276511">
+                <join-table name="user_relation_permissions">
+                    <jpa:join-column name="user_relation_permission_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                    <jpa:inverse-join-column name="permission_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </join-table>
+            </many-to-many>
+        </jpa:attributes>
+        <jpa:table name="relation_permissions"/>
+    </jpa:entity>
+    <jpa:entity xre="false" sm="false" abs="false" class="Users" visibile="true" minimized="false" rootElement="_14929427627201" id="_149294276278112">
+        <inf>java.lang.Cloneable</inf>
+        <annotation n="@lombok.Getter"/>
+        <annotation n="@lombok.Setter"/>
+        <annotation n="@lombok.NoArgsConstructor"/>
+        <jpa:attributes>
+            <basic attribute-type="Boolean" visibile="true" name="active" id="_149294276278113">
+                <jpa:column name="active" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" visibile="true" name="locked" id="_149294276278114">
+                <jpa:column name="locked" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="pw" id="_149294276278115">
+                <jpa:column name="pw" unique="false" nullable="true" insertable="true" updatable="true" length="1024"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="salt" id="_149294276278317">
+                <jpa:column name="salt" unique="false" nullable="true" insertable="true" updatable="true" length="8"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="username" id="_149294276278318">
+                <jpa:column name="username" unique="true" nullable="true" insertable="true" updatable="true" length="256"/>
+            </basic>
+            <many-to-many own="true" collection-type="java.util.Set" connected-entity-id="_14929427627452" fetch="EAGER" visibile="true" name="roles" id="_149294276278116">
+                <join-table name="user_roles">
+                    <jpa:join-column name="user_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                    <jpa:inverse-join-column name="role_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </join-table>
+            </many-to-many>
+        </jpa:attributes>
+        <jpa:table name="users"/>
+    </jpa:entity>
+    <jpa:entity xre="false" sm="false" abs="false" class="Permissions" visibile="true" minimized="false" rootElement="_14929427627201" id="_149294276279719">
+        <inf>de.alpharogroup.auth.interfaces.Permission</inf>
+        <inf>java.lang.Cloneable</inf>
+        <annotation n="@lombok.Getter"/>
+        <annotation n="@lombok.Setter"/>
+        <annotation n="@lombok.NoArgsConstructor"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="description" id="_149294276279720">
+                <jpa:column name="description" unique="false" nullable="true" insertable="true" updatable="true" length="64"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="permissionName" id="_149294276279721">
+                <jpa:column name="permissionName" unique="true" nullable="true" insertable="true" updatable="true" length="64"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="shortcut" id="_149294276279822">
+                <jpa:column name="shortcut" unique="true" nullable="true" insertable="true" updatable="true" length="10"/>
+            </basic>
+        </jpa:attributes>
+        <jpa:table name="permissions"/>
+    </jpa:entity>
+    <jpa:entity xre="false" sm="false" abs="false" class="UserTokens" visibile="true" minimized="false" rootElement="_14929427627201" id="_149294276281323">
+        <inf>java.lang.Cloneable</inf>
+        <annotation n="@lombok.Getter"/>
+        <annotation n="@lombok.Setter"/>
+        <annotation n="@lombok.ToString(callSuper=true)"/>
+        <annotation n="@lombok.NoArgsConstructor"/>
+        <annotation n="@lombok.AllArgsConstructor"/>
+        <annotation n="@lombok.Builder"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="username" id="_149294276281324">
+                <jpa:column name="username" unique="true" nullable="true" insertable="true" updatable="true" length="256"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="token" id="_149294276281325">
+                <jpa:column name="token" unique="true" nullable="true" insertable="true" updatable="true" length="128"/>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="expiry" id="_149294276281326"/>
+        </jpa:attributes>
+        <jpa:table name="user_tokens"/>
+    </jpa:entity>
+    <jpa:entity xre="false" sm="false" abs="false" class="ResetPasswords" visibile="true" minimized="false" rootElement="_14929427627201" id="_149294276282627">
+        <inf>java.lang.Cloneable</inf>
+        <annotation n="@lombok.Getter"/>
+        <annotation n="@lombok.Setter"/>
+        <annotation n="@lombok.NoArgsConstructor"/>
+        <jpa:attributes>
+            <basic attribute-type="java.util.Date" visibile="true" name="expiryDate" id="_149294276282628">
+                <jpa:column name="expiry_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="generatedPassword" id="_149294276282629">
+                <jpa:column name="generated_password" unique="false" nullable="true" insertable="true" updatable="true" length="1024"/>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="starttime" id="_149294276282630">
+                <jpa:column name="starttime" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_149294276278112" visibile="true" name="user" id="_149294276282631">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+                <join-column name="user_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </many-to-one>
+        </jpa:attributes>
+        <jpa:table name="reset_passwords"/>
+    </jpa:entity>
+    <jpa:diagram>
+        <plane elementRef="_14929427627201">
+            <shape elementRef="_14929427627452">
+                <Bounds x="32.0" y="32.0" width="135.0" height="107.0"/>
+            </shape>
+            <shape elementRef="_14929427627658">
+                <Bounds x="793.0" y="203.0" width="241.0" height="95.0"/>
+            </shape>
+            <shape elementRef="_149294276278112">
+                <Bounds x="793.0" y="553.0" width="137.0" height="167.0"/>
+            </shape>
+            <shape elementRef="_149294276279719">
+                <Bounds x="547.0" y="32.0" width="182.0" height="95.0"/>
+            </shape>
+            <shape elementRef="_149294276281323">
+                <Bounds x="67.0" y="625.0" width="180.0" height="95.0"/>
+            </shape>
+            <shape elementRef="_149294276282627">
+                <Bounds x="32.0" y="362.0" width="215.0" height="127.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
