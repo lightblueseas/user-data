@@ -24,30 +24,54 @@
  */
 package user.model;
 
+import java.io.File;
 import java.util.List;
 
+import org.dbunit.IDatabaseTester;
+import org.dbunit.JdbcDatabaseTester;
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.dbunit.operation.DatabaseOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
+import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.user.entities.Permissions;
 import de.alpharogroup.user.repositories.PermissionsDao;
 
 @ContextConfiguration(locations = "classpath:test-h2-applicationContext.xml")
 public class PermissionsDaoTest extends AbstractTestNGSpringContextTests
 {
-
+	private static final String JDBC_DRIVER = org.h2.Driver.class.getName();
+	private static final String JDBC_URL = "jdbc:h2:mem:~/users;USER=SA;PASSWORD=;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1";
+	private static final String USER = "sa";
+	private static final String PASSWORD = "";
 	@Autowired
 	private PermissionsDao permissionsDao;
 
-	@Test(enabled = false)
-	public void getAllPermissions()
+	@Test(enabled = true)
+	public void getAllPermissions() throws Exception
 	{
+		final IDataSet dataSet = readDataSet();
+		cleanlyInsert(dataSet);
 		final List<Permissions> list = permissionsDao.findAll();
-		AssertJUnit.assertEquals(2, list.size());
+		AssertJUnit.assertEquals(0, list.size());
 
+	}
+
+
+	private IDataSet readDataSet() throws Exception {
+
+		return new FlatXmlDataSetBuilder().build(new File(PathFinder.getSrcTestResourcesDir(), "dataset.xml"));
+	}
+
+	private void cleanlyInsert(final IDataSet dataSet) throws Exception {
+		final IDatabaseTester databaseTester = new JdbcDatabaseTester(JDBC_DRIVER, JDBC_URL, USER, PASSWORD);
+		databaseTester.setSetUpOperation(DatabaseOperation.CLEAN_INSERT);
+		databaseTester.setDataSet(dataSet);
 	}
 
 }
