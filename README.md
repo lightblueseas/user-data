@@ -6,7 +6,7 @@ The project holds backend data for simple user management.
 
 # ERD-Diagramm
 
-The erd-diagramm for this database looks as follows: ![here](https://github.com/lightblueseas/user-data/blob/develop/user-init/src/main/resources/erd/erd-diagramm-users.png)
+The erd-diagramm for this database looks as follows: ![erd-diagramm](https://github.com/lightblueseas/user-data/blob/develop/user-init/src/main/resources/erd/erd-diagramm-users.png)
 
 This erd-diagramm was created with the awesome [SQuirreL SQL Client](http://squirrel-sql.sourceforge.net/)
 
