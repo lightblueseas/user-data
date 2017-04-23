@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  
-  <parent>
-    <groupId>de.alpharogroup</groupId>
-    <artifactId>user-data</artifactId>
-    <version>3.12.0-SNAPSHOT</version>
-  </parent>
-  
-  <artifactId>user-init</artifactId>  
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>de.alpharogroup</groupId>
+		<artifactId>user-data</artifactId>
+		<version>3.12.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>user-init</artifactId>
 
 	<dependencies>
 
@@ -25,7 +26,7 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>user-business</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>resourcebundle-inspector</artifactId>
@@ -35,27 +36,16 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
-		<!-- H2 DEPENDENCIES -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- UNIT TESTS DEPENDENCIES -->
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-		</dependency>
-
+		<!-- SPRING DEPENDENCIES -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<!-- HIBERNATE DEPENDENCIES -->
 		<dependency>
@@ -100,10 +90,16 @@
 			<artifactId>email-tails</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<!-- H2 DEPENDENCIES -->
 		<dependency>
-			<groupId>com.jolbox</groupId>
-			<artifactId>bonecp</artifactId>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- DBUNIT DEPENDENCIES -->
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
 			<scope>test</scope>
 		</dependency>
 
@@ -224,5 +220,5 @@
 		</profile>
 
 	</profiles>
-  
+
 </project>
