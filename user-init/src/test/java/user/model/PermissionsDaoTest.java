@@ -52,6 +52,15 @@ public class PermissionsDaoTest extends AbstractTestNGSpringContextTests
 	@Autowired
 	private PermissionsDao permissionsDao;
 
+	private void cleanlyInsert(final IDataSet dataSet) throws Exception
+	{
+		final IDatabaseTester databaseTester = new JdbcDatabaseTester(JDBC_DRIVER, JDBC_URL, USER,
+			PASSWORD);
+		databaseTester.setSetUpOperation(DatabaseOperation.CLEAN_INSERT);
+		databaseTester.setDataSet(dataSet);
+	}
+
+
 	@Test(enabled = true)
 	public void getAllPermissions() throws Exception
 	{
@@ -62,16 +71,11 @@ public class PermissionsDaoTest extends AbstractTestNGSpringContextTests
 
 	}
 
+	private IDataSet readDataSet() throws Exception
+	{
 
-	private IDataSet readDataSet() throws Exception {
-
-		return new FlatXmlDataSetBuilder().build(new File(PathFinder.getSrcTestResourcesDir(), "dataset.xml"));
-	}
-
-	private void cleanlyInsert(final IDataSet dataSet) throws Exception {
-		final IDatabaseTester databaseTester = new JdbcDatabaseTester(JDBC_DRIVER, JDBC_URL, USER, PASSWORD);
-		databaseTester.setSetUpOperation(DatabaseOperation.CLEAN_INSERT);
-		databaseTester.setDataSet(dataSet);
+		return new FlatXmlDataSetBuilder()
+			.build(new File(PathFinder.getSrcTestResourcesDir(), "dataset.xml"));
 	}
 
 }
