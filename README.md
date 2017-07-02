@@ -1,14 +1,20 @@
-# user-data
+# Overview
 
 Parent project that holds module projects for the persistence of user data.
 
 The project holds backend data for simple user management.
 
+# ERD-Diagramm
+
+The erd-diagramm for this database looks as follows: ![erd-diagramm](https://github.com/lightblueseas/user-data/blob/develop/user-init/src/main/resources/erd/erd-diagramm-users.png)
+
+This erd-diagramm was created with the awesome [SQuirreL SQL Client](http://squirrel-sql.sourceforge.net/)
+
 ## License
 
 The source code comes under the liberal MIT License, making user-data great for all types of applications with users or accounts.
 
-# Build status and latest maven version
+# Build status
 [![Build Status](https://travis-ci.org/lightblueseas/user-data.svg?branch=master)](https://travis-ci.org/lightblueseas/user-data)
 
 ## Maven Central
@@ -27,7 +33,7 @@ You can first define the version properties:
 	<properties>
 			...
 		<!-- user-data version -->
-		<user-data.version>3.11.0</user-data.version>
+		<user-data.version>3.12.0</user-data.version>
 		<user-business.version>${user-data.version}</user-business.version>
 		<user-domain.version>${user-data.version}</user-domain.version>
 		<user-entities.version>${user-data.version}</user-entities.version>
@@ -121,6 +127,9 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 			</dependency>
 			...
 		</dependencies>
+		 
+## Open Issues
+[![Open Issues](https://img.shields.io/github/issues/lightblueseas/user-data.svg?style=flat)](https://github.com/lightblueseas/user-data/issues) 
 
 ## Want to Help and improve it? ###
 
@@ -143,4 +152,7 @@ No animals were harmed in the making of this library.
 
 # Donate
 
-If you like this library, please consider a donation through <a href="https://flattr.com/submit/auto?fid=r7vp62&url=https%3A%2F%2Fgithub.com%2Flightblueseas%2Fuser-data" target="_blank"><img src="//button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
+If you like this library, please consider a donation through 
+<a href="https://flattr.com/submit/auto?fid=r7vp62&url=https%3A%2F%2Fgithub.com%2Flightblueseas%2Fuser-data" target="_blank">
+<img src="http://button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0">
+</a>
