@@ -5,33 +5,28 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>user-data</artifactId>
-		<version>3.12.0</version>
+		<version>3.12.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>user-entities</artifactId>
+	<artifactId>user-domain</artifactId>
 
 	<dependencies>
 
-		<!-- SPRING DEPENDENCIES -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>domain-api</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>data-api</artifactId>
+			<artifactId>user-entities</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>data-usertype</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>de.alpharogroup</groupId>
-			<artifactId>auth-security</artifactId>
+			<artifactId>user-business</artifactId>
 		</dependency>
 
 	</dependencies>
+	
 </project>
