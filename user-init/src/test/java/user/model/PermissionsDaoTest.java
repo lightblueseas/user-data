@@ -61,7 +61,7 @@ public class PermissionsDaoTest extends AbstractTestNGSpringContextTests
 	}
 
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void getAllPermissions() throws Exception
 	{
 		final IDataSet dataSet = readDataSet();
