@@ -15,6 +15,7 @@ This erd-diagramm was created with the awesome [SQuirreL SQL Client](http://squi
 The source code comes under the liberal MIT License, making user-data great for all types of applications with users or accounts.
 
 # Build status
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/34cc0c7c3c8f4e2d8b75da646ee2b55d)](https://www.codacy.com/app/tatjana19/user-data?utm_source=github.com&utm_medium=referral&utm_content=lightblueseas/user-data&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/lightblueseas/user-data.svg?branch=master)](https://travis-ci.org/lightblueseas/user-data)
 
 ## Maven Central
@@ -33,7 +34,7 @@ You can first define the version properties:
 	<properties>
 			...
 		<!-- user-data version -->
-		<user-data.version>3.12.0</user-data.version>
+		<user-data.version>3.12.2</user-data.version>
 		<user-business.version>${user-data.version}</user-business.version>
 		<user-domain.version>${user-data.version}</user-domain.version>
 		<user-entities.version>${user-data.version}</user-entities.version>
