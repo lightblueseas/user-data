@@ -35,7 +35,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.torpedoquery.jpa.Torpedo;
 
-import de.alpharogroup.collections.ListExtensions;
+import de.alpharogroup.collections.list.ListExtensions;
 import de.alpharogroup.db.service.jpa.AbstractBusinessService;
 import de.alpharogroup.random.RandomExtensions;
 import de.alpharogroup.user.entities.UserTokens;
@@ -64,9 +64,9 @@ public class UserTokensBusinessService
 	public List<UserTokens> findAll(String username)
 	{
 		List<UserTokens> userTokens = null;
-		UserTokens from = Torpedo.from(UserTokens.class);
+		final UserTokens from = Torpedo.from(UserTokens.class);
 		Torpedo.where(from.getUsername()).eq(username);
-		org.torpedoquery.jpa.Query<UserTokens> select = Torpedo.select(from);
+		final org.torpedoquery.jpa.Query<UserTokens> select = Torpedo.select(from);
 		userTokens = select.list(getDao().getEntityManager());
 		return userTokens;
 	}
@@ -74,7 +74,7 @@ public class UserTokensBusinessService
 	@Override
 	public String getAutheticationToken(String username)
 	{
-		UserTokens token = find(username);
+		final UserTokens token = find(username);
 		if (token != null)
 		{
 			return token.getToken();
@@ -86,11 +86,11 @@ public class UserTokensBusinessService
 	public boolean isValid(String token)
 	{
 		List<UserTokens> userTokens = null;
-		UserTokens from = Torpedo.from(UserTokens.class);
+		final UserTokens from = Torpedo.from(UserTokens.class);
 		Torpedo.where(from.getToken()).eq(token);
-		org.torpedoquery.jpa.Query<UserTokens> select = Torpedo.select(from);
+		final org.torpedoquery.jpa.Query<UserTokens> select = Torpedo.select(from);
 		userTokens = select.list(getDao().getEntityManager());
-		boolean valid = CollectionUtils.isNotEmpty(userTokens);
+		final boolean valid = CollectionUtils.isNotEmpty(userTokens);
 		return valid;
 	}
 
@@ -106,14 +106,14 @@ public class UserTokensBusinessService
 			userTokens = merge(newUserTokens(username));
 		}
 		// check if expired
-		Date now = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
+		final Date now = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
 		if (userTokens.getExpiry().before(now))
 		{
 			// expires in one year
-			Date expiry = Date.from(
+			final Date expiry = Date.from(
 				LocalDateTime.now().plusMonths(12).atZone(ZoneId.systemDefault()).toInstant());
 			// create a token
-			String token = RandomExtensions.randomToken();
+			final String token = RandomExtensions.randomToken();
 			userTokens.setExpiry(expiry);
 			userTokens.setToken(token);
 			userTokens = merge(userTokens);
@@ -133,10 +133,10 @@ public class UserTokensBusinessService
 	{
 		UserTokens userTokens;
 		// expires in one year
-		Date expiry = Date
+		final Date expiry = Date
 			.from(LocalDateTime.now().plusMonths(12).atZone(ZoneId.systemDefault()).toInstant());
 		// create a token
-		String token = RandomExtensions.randomToken();
+		final String token = RandomExtensions.randomToken();
 		userTokens = UserTokens.builder().expiry(expiry).username(username).token(token).build();
 		return userTokens;
 	}

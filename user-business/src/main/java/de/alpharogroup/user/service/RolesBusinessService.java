@@ -33,7 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import de.alpharogroup.collections.ListExtensions;
+import de.alpharogroup.collections.list.ListExtensions;
 import de.alpharogroup.db.service.jpa.AbstractBusinessService;
 import de.alpharogroup.user.entities.Permissions;
 import de.alpharogroup.user.entities.Roles;
