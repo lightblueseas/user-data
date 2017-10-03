@@ -38,7 +38,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.auth.Credentials;
-import de.alpharogroup.collections.SetExtensions;
+import de.alpharogroup.collections.set.SetExtensions;
 import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.collections.pairs.Triple;
 import de.alpharogroup.cxf.rest.client.AbstractRestClient;
